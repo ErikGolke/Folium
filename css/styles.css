@@ -1,0 +1,77 @@
+body {
+	margin: 0;
+}
+#loginHeader {
+	font-size:40px;
+	font-family: 'Open Sans', sans-serif;
+}
+#links {
+	width: 700px;
+	height: 60px;
+	background-color: white;
+	bottom:0;
+	position:absolute;
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	padding-left: 60px;
+
+}
+#navBar > p {
+	margin-top:0;
+	font-family: 'Open Sans', sans-serif;
+	display:inline-block;
+	top: 0px;
+	right:10px;
+	position:absolute;
+	font-size: 30pt;
+	color: white;
+}
+.button {
+	background-color: blue;
+	color:black;
+	padding: 15px 25px 15px 25px;
+	margin-left: 10px;
+	margin-right: 10px;
+	border-radius: 25px;
+	border: 1px solid black;
+}
+#navBar {
+	height: 110px;
+	width: 100%;
+	background-color:grey;
+	position:relative;
+}
+#login {
+	background-color: blue;
+	color:black;
+	padding: 10px 25px 15px 25px;
+	border-radius:25px;
+	border: 1px solid black;
+	position: absolute;
+	right: 25px;
+	top: 55px;
+	font-size:17pt;
+	
+}
+#mainBody {
+	display: grid;
+	grid-template-columns: 1fr 1fr;	
+	grid-template-rows: auto;
+}
+#leftSide {
+	background-color:blue;
+	grid-column: 1;
+	text-align:center;
+}
+#rightSide {
+	background-color:red;
+	grid-column: 2;
+}
+img {
+	margin:auto;
+}
+.imgWrapper {
+	padding: 15px 15px 15px 15px;
+	background-color:grey;
+}
