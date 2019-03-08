@@ -1,6 +1,10 @@
 body {
 	margin: 0;
 }
+ul {
+	list-style-type: none;
+	align-self:center;
+}
 #loginHeader {
 	font-size:40px;
 	font-family: 'Open Sans', sans-serif;
@@ -54,15 +58,29 @@ body {
 	font-size:17pt;
 	
 }
+#myPlant {
+		background-color: blue;
+	color:black;
+	padding: 10px 45px 15px 45px;
+	border-radius:25px;
+	border: 1px solid black;
+	font-size:17pt;
+	align-self:center;
+
+}
 #mainBody {
 	display: grid;
 	grid-template-columns: 1fr 1fr;	
 	grid-template-rows: auto;
+	height:500px;
 }
 #leftSide {
 	background-color:blue;
 	grid-column: 1;
 	text-align:center;
+	display: flex;
+	flex-direction: column;
+	justify-content:space-between;
 }
 #rightSide {
 	background-color:red;
@@ -74,6 +92,16 @@ img {
 .imgWrapper {
 	padding: 15px 15px 15px 15px;
 	background-color:grey;
-	display:inline-block;
+	align-self:center;
 	border-radius: 15px;
+}
+.plantInfo {
+	background-color:white;
+	align-self:center;
+	padding: 0 25px 0 25px;
+	border: 15px solid grey;
+	left: 0;
+}
+li {
+	align-self:flex-start;
 }
