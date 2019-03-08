@@ -74,4 +74,6 @@ img {
 .imgWrapper {
 	padding: 15px 15px 15px 15px;
 	background-color:grey;
+	display:inline-block;
+	border-radius: 15px;
 }
