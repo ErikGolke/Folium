@@ -44,7 +44,7 @@ ul {
 #navBar {
 	height: 110px;
 	width: 100%;
-	background-color:grey;
+	background-image:url("./images/leaves.jpg");
 	position:relative;
 }
 #login {
