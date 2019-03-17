@@ -5,16 +5,16 @@
 <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
 <link rel="stylesheet" href="./css/styles.css">
 <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
 <script>
   // Initialize Firebase
   var config = {
-    apiKey: "AIzaSyCPg-A3s3cTGX_Dpm07HJAGlW1N4D9pkTs",
-    authDomain: "project1-bc303.firebaseapp.com",
-    databaseURL: "https://project1-bc303.firebaseio.com",
-    projectId: "project1-bc303",
-    storageBucket: "project1-bc303.appspot.com",
-    messagingSenderId: "581926662129"
+    apiKey: "AIzaSyBfhX8hm-A3IAn2us9ybZiP_GWg-H-5sC8",
+    authDomain: "folium-93435.firebaseapp.com",
+    databaseURL: "https://folium-93435.firebaseio.com",
+    projectId: "folium-93435",
+    storageBucket: "folium-93435.appspot.com",
+    messagingSenderId: "700685483452"
   };
   firebase.initializeApp(config);
 </script>
@@ -48,7 +48,7 @@ var uiConfig = {
   },
   // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
   signInFlow: 'popup',
-  signInSuccessUrl: 'main.html',
+  signInSuccessUrl: 'index.html',
   signInOptions: [
     // Leave the lines as is for the providers you want to offer your users.
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -59,9 +59,9 @@ var uiConfig = {
     firebase.auth.PhoneAuthProvider.PROVIDER_ID
   ],
   // Terms of service url.
-  tosUrl: 'main.html',
+  tosUrl: 'index.html',
   // Privacy policy url.
-  privacyPolicyUrl: 'main.html'
+  privacyPolicyUrl: 'index.html'
 
 };
 
