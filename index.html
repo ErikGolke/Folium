@@ -34,6 +34,8 @@
 			<a class="button" href="./neighbours.html">Neighbours</a>
 			<a class="button" href="./challenges.html">Challenges</a>
 			<a class="button" href="./about.html">About</a>
+
+			<button onclick="logout()">Logout</button>
 		</nav>
 	</div>
 </div>
@@ -58,18 +60,36 @@
 <div id="user">
 <p>ErIK</p>
 <script>
+
 firebase.auth().onAuthStateChanged(function(user) {
-var user = firebase.auth().currentUser;
-var name;
-if (user != null) {
-  name = user.displayName;
-}
-  if (user) {
-	document.getElementById("login").innerHTML = name;
-  } else {
-    console.log("Not signed in");
-  }
+	var user = firebase.auth().currentUser;
+	var name;
+
+	if (user != null) {
+ 		 name = user.displayName;
+	}
+    if (user) {
+		document.getElementById("login").innerHTML = name;
+    }else {
+   	 console.log("Not signed in");
+ 	 }
 });
+
+function logout() {
+	firebase.auth().signOut().then(function() {
+		console.log('Signed Out');
+		document.getElementById("login").innerHTML = "Login";
+	}, function(error) {
+ 		console.error('Sign Out Error', error);
+	});
+}
+/*
+	function logout(e) {
+		firebase.auth().getInstance().signOut();
+		console.log("LOGOUT");
+		e.preventDefault();
+}
+*/
 </script>
 </div>
 </body>
