@@ -3,6 +3,23 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="css/styles.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBfhX8hm-A3IAn2us9ybZiP_GWg-H-5sC8",
+    authDomain: "folium-93435.firebaseapp.com",
+    databaseURL: "https://folium-93435.firebaseio.com",
+    projectId: "folium-93435",
+    storageBucket: "folium-93435.appspot.com",
+    messagingSenderId: "700685483452"
+  };
+  firebase.initializeApp(config);
+</script>
+	<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </head>
 <body>
@@ -17,9 +34,12 @@
 			<a class="button" href="./neighbours.html">Neighbours</a>
 			<a class="button" href="./challenges.html">Challenges</a>
 			<a class="button" href="./about.html">About</a>
+
+			<button onclick="logout()">Logout</button>
 		</nav>
 	</div>
 </div>
+</header>
 	<hr></hr>
 <div id="mainBody">
 	<div id="leftSide">
@@ -37,6 +57,40 @@
 	<div id="rightSide">
 	</div>
 </div>
-</header>
+<div id="user">
+<p>ErIK</p>
+<script>
+
+firebase.auth().onAuthStateChanged(function(user) {
+	var user = firebase.auth().currentUser;
+	var name;
+
+	if (user != null) {
+ 		 name = user.displayName;
+	}
+    if (user) {
+		document.getElementById("login").innerHTML = name;
+    }else {
+   	 console.log("Not signed in");
+ 	 }
+});
+
+function logout() {
+	firebase.auth().signOut().then(function() {
+		console.log('Signed Out');
+		document.getElementById("login").innerHTML = "Login";
+	}, function(error) {
+ 		console.error('Sign Out Error', error);
+	});
+}
+/*
+	function logout(e) {
+		firebase.auth().getInstance().signOut();
+		console.log("LOGOUT");
+		e.preventDefault();
+}
+*/
+</script>
+</div>
 </body>
 </html>
