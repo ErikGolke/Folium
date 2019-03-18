@@ -54,11 +54,17 @@
 		</div>
 	</div>
 	<div id="verticalLine"></div>
+	<input type="file"
+       id="photo" name="photo"
+       accept="image/png, image/jpeg, image/jpg">
+	<button onclick="upload()">Upload</button>
 	<div id="rightSide">
 	</div>
 </div>
 <div id="user">
 <p>ErIK</p>
+
+</div>
 <script>
 
 firebase.auth().onAuthStateChanged(function(user) {
@@ -83,14 +89,22 @@ function logout() {
  		console.error('Sign Out Error', error);
 	});
 }
-/*
-	function logout(e) {
-		firebase.auth().getInstance().signOut();
-		console.log("LOGOUT");
-		e.preventDefault();
+function upload() {
+const ref = firebase.storage().ref();
+const file = document.querySelector('#photo').files[0];
+const name = (+new Date()) + '-' + file.name;
+const metadata = {
+  contentType: file.type
+};
+const task = ref.child(name).put(file, metadata);
+task
+  .then(snapshot => snapshot.ref.getDownloadURL())
+  .then((url) => {
+    console.log(url);
+    document.querySelector('#photo').src = url;
+  })
+  .catch(console.error);
 }
-*/
 </script>
-</div>
 </body>
 </html>
