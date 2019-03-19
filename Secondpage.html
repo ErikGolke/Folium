@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+    <head>
+        <style>
+            #wrapper {
+                width:1100px;
+                height:800px;
+                border:1px solid #222222;
+                margin:0 auto;
+            }
+            #navi {
+                width:100%;
+                height:80px;
+            }
+            .navidiv {
+                    display:inline-block;
+                line-height:50px;
+            }
+            #logo {
+                width:150px;
+                margin-top:10px;
+                margin-left:60px;
+                margin-bottom:0px;
+                padding-bottom:0px;
+                
+            }
+            .navigation {
+                margin:10px;
+            }
+            #navibutton {
+                margin-left:200px;
+            }
+            #logoff {
+                margin-top:40px;
+                margin-right:20px;
+                float:right;
+            }
+            #contents {
+                width:100%;
+                height:700px;
+                border:1px solid #ff2341;
+                background-color:rgba(237, 253, 227, 0.897);
+            }
+            #smallpic {
+                width:20%;
+                height:90%;
+                float:left;
+                margin:10px;
+                text-align: center;
+            }
+            .smallpictures {
+                margin:5px;
+            }
+            .smallpictures img {
+                width:90%;
+                height:180px;
+                margin:0 auto;
+                border:1px solid #222222;
+            }
+            #bigpic {
+                width:40%;
+                height:90%;
+                border:1px solid #222222;
+                float:left;
+                margin:15px;
+                position:relative;
+            }
+            #bigpic img {
+                position:absolute;
+                width:100%;
+                height:60%;
+            }
+            #information {
+                width:32%;
+                height:90%;
+                float:left;
+                margin:15px;
+                border:1px solid #f368f2;
+            }
+
+        
+        </style>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+            
+            $(document).ready(function() {
+                $('.smallpictures a').click(function(evt){
+                    evt.preventDefault();
+
+                    var imgPath=$(this).attr('href');
+                    var oldImage=$('#bigpic img');
+
+                    var newImage=$('<img src="' + imgPath +'">');
+                    newImage.hide();
+
+			        
+                    $('#bigpic').prepend(newImage);
+                    newImage.fadeIn(1000);
+                    oldImage.fadeOut(1000,function(){
+		            $(this).remove();
+			    	});
+
+                }); //end click
+                $('.smallpictures a:first').click();
+            });//end ready
+            
+        </script>
+
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="navi">
+                    <div id="logo" class="navidiv"><img src="./pictures/folium.jpg" width="100%" height="60px"></div>
+                    <div id="navibutton" class="navidiv">
+                        <a>｜</a>
+                        <a class="navigation">Home</a>
+                        <a>｜</a>
+                        <a class="navigation">My Flower</a>
+                        <a>｜</a>
+                        <a class="navigation">Neighbor's </a>
+                        <a>｜</a>
+                        <a class="navigation">Challenges</a>
+                        <a>｜</a>
+                        <a class="navigation">About</a>
+                        <a>｜</a>
+                    </div>
+                    <div id="logoff" class="navidiv">Log-Off</div>
+            </div>
+            <div>
+                <a>1</a>
+
+                
+            </div>
+            <div id="contents">
+                <div id="smallpic">
+                    <div class="smallpictures">
+                        <a href="./pictures/firstpic.jpg"><img src="./pictures/firstpic.jpg"></a>
+                    </div>
+                    <div class="smallpictures">
+                        <a href="./pictures/secondpic.jpg"><img src="./pictures/secondpic.jpg"></a>
+                    </div>
+                    <div class="smallpictures">
+                        <a href="./pictures/thirdpic.jpg"><img src="./pictures/thirdpic.jpg"></a>
+                    </div>
+                </div>
+                <div id="bigpic">   
+                    <div id=bigpiccontent>asdf</div>
+
+                </div>
+                <div id="information">
+
+
+                </div>
+
+            </div>
+            
+        </div>
+    </body>
+    
+</html>
