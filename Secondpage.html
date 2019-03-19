@@ -113,19 +113,28 @@
             <div id="navi">
                     <div id="logo" class="navidiv"><img src="./pictures/folium.jpg" width="100%" height="60px"></div>
                     <div id="navibutton" class="navidiv">
-                        <a>｜</a>
-                        <a class="navigation">Home</a>
-                        <a>｜</a>
-                        <a class="navigation">My Flower</a>
-                        <a>｜</a>
-                        <a class="navigation">Neighbor's </a>
-                        <a>｜</a>
-                        <a class="navigation">Challenges</a>
-                        <a>｜</a>
-                        <a class="navigation">About</a>
-                        <a>｜</a>
-                    </div>
+<!--        practicing drop down menu - Raging-->
+                        <div class="dropdown">
+                                <a>｜</a>
+                                <a class="navigation">Home</a>
+                                <a>｜</a>
+                                    <a class="navigation dropbtn">My Flower</a>
+                                <div id="myflower-dropdown" class="dropdown-content">
+                                    <a href="#">Link 1</a>
+                                    <a href="#">Link 2</a>
+                                    <a href="#">Link 3</a>
+                                </div>
+                                <a>｜</a>
+                                <a class="navigation">Neighbor's </a>
+                                <a>｜</a>
+                                <a class="navigation">Challenges</a>
+                                <a>｜</a>
+                                <a class="navigation">About</a>
+                                <a>｜</a>
+                        </div>
+<!--            practice end - Raging-->
                     <div id="logoff" class="navidiv">Log-Off</div>
+                </div>
             </div>
             <div>
                 <a>1</a>
@@ -156,6 +165,13 @@
             </div>
             
         </div>
+<!--        Dropdown scripting practice-->
+        <script>
+            function dropDownFunction(e){
+                document.getElementById("myflower-dropdown")
+            }
+        </script>
+<!--        Dropdown scripting practice end-->
     </body>
     
 </html>
