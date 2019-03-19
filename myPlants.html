@@ -2,15 +2,43 @@
 <html>
     <head>
         <style>
+            @import url(https://fonts.googleapis.com/css?family=Ubuntu);
+            * {
+                box-sizing:border-box;
+                height:100%;
+            }
+            #background-image {
+                background-image:url('./pictures/background.png');
+                background-repeat:no-repeat;
+                display:block;
+                height:600px;
+                width:auto;
+                background-size:100%;
+                left:0;
+                filter:blur(5px);  /* not working!!*/
+                right:0;
+            }
+            body {
+                font-family:'Ubuntu', sans-serif;
+            }
+            #mainpage {
+                color:white;
+                font-size:45px;
+                position:absolute;
+                top:30%;
+                left:15%;
+            }
+
             #wrapper {
-                margin:0;
+                margin:0 auto;
                 border:1px solid #222222;
+                width:100%;
+                margin-top:200px;
             }
             #first {
                 width:100%;
                 height:700px;
-                border:1px solid #ff00ff;
-                /*background-image:url('./pictures/background.jpg');*/
+                
                 background-color:white;
                 background-repeat:no-repeat;
                 background-size:100% 600px;
@@ -18,12 +46,33 @@
                 margin-bottom:10px;
                 
             }
-            #navi {
+            #aclass1, #aclass2 {
                 border:1px solid #222222;
-                padding:50px;
-                padding-left:1200px;
-             
+                display:inline-block;
+                background-color:antiquewhite;
+                width:100px;
+                height:30px;
+                position:absolute;
+                top:10%;
+                text-align: center;
             }
+            #aclass1 {
+                left:77%;
+            }
+            
+            #aclass2 {
+                left:85%;
+            }
+            #aclass3 {
+                position:absolute;
+                top:85%;
+                left:50%;
+                width:20px;
+                height:20px;
+                font-size: 50px;
+                color:black;
+            }
+
             /*////////////////////////////////////////////////*/
             /*For background pictures*/
             #slide {
@@ -52,13 +101,7 @@
                 margin-top:500px;
                 text-align: center;
             }
-            .aclass {
-                border:1px solid #222222;
-                display:inline-block;
-                width:70px;
-                height:20px;
-                text-align: center;
-            }
+
             #second {
                 height:700px;
                 border:1px solid #ff33bb;
@@ -82,42 +125,38 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     <body>
-
-   
-
+        
+        <div id="background-image"></div>
+        <div id="mainpage">Folium<br>John Erik Yun<br>For Your house plants..asdfqwer.</div>
+        <div id="aclass1">Log-in</div>
+        <div id="aclass2">asdfa</div>
+        <div id="aclass3">∨</div>
+        
+        
         <script>
-            // For background pictures //
-            imgslide();
-            function imgslide() {
-            $val=$("#slide").attr("val");
-            $mx=$("#slide").attr("mx");
-            $("#img"+$val).hide();
-            if($val==$mx){$val=1;}
-            else{$val++;}
-            $("#img"+$val).fadeIn(500);
-            $("#slide").attr('val',$val);
-            setTimeout('imgslide()', 7000);
-            }
-            // For background pictures //
-            </script>
-                    
+                // For background pictures on Second slides //
+                imgslide();
+                function imgslide() {
+                $val=$("#slide").attr("val");
+                $mx=$("#slide").attr("mx");
+                $("#img"+$val).hide();
+                if($val==$mx){$val=1;}
+                else{$val++;}
+                $("#img"+$val).fadeIn(500);
+                $("#slide").attr('val',$val);
+                setTimeout('imgslide()', 4000);
+                }
+                // For background pictures //
+                </script>
         <div id="wrapper">
-            <div id="first">
-                <div id="navi">
-                    <div class="aclass">Log-in</div>
-                    <div class="aclass">asdfa</div>
-                </div>
-                <div id="slide" val="1" mx="5">
-                        <li id="img1"><img src="1.jpg"></li>
-                        <li id="img2"><img src="2.jpg"></li>
-                        <li id="img3"><img src="3.jpg"></li>
-                        <li id="img4"><img src="4.jpg"></li>
-                        <li id="img5"><img src="5.jpg"></li>
-                </div>
-                <div id="bottom">scroll</div>
-            </div>
             <div id="second">
-                <img id="secondpic" src="./pictures/secondpic.png">;
+                <div id="slide" val="1" mx="5">
+                    <li id="img1"><img src="1.jpg"></li>
+                    <li id="img2"><img src="2.jpg"></li>
+                    <li id="img3"><img src="3.jpg"></li>
+                    <li id="img4"><img src="4.jpg"></li>
+                    <li id="img5"><img src="5.jpg"></li>
+            </div>
             </div>
             <div id="FAQ">
                     <div class="wrapper">
