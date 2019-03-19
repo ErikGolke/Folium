@@ -10,7 +10,8 @@
                 width:100%;
                 height:700px;
                 border:1px solid #ff00ff;
-                background-image:url('./pictures/background.jpg');
+                /*background-image:url('./pictures/background.jpg');*/
+                background-color:white;
                 background-repeat:no-repeat;
                 background-size:100% 600px;
                 margin:0 auto;
@@ -23,6 +24,30 @@
                 padding-left:1200px;
              
             }
+            /*////////////////////////////////////////////////*/
+            /*For background pictures*/
+            #slide {
+                position:relative;
+                width:500px;
+            }
+            /*For background pictures*/
+            #slide li {
+                position:absolute;
+                top:0;
+                left:50px;
+                display:none;
+                -webkit-display:block;
+            }
+            /*For background pictures*/
+            #slide img {
+                width:700px;
+                height:500px;
+                border-radius: 15px;
+                box-shadow: 0px 0px 20px -5px rgba(0,0,0,0.8);
+            }
+            /*////////////////////////////////////////////////*/
+
+            
             #bottom {
                 margin-top:500px;
                 text-align: center;
@@ -52,35 +77,47 @@
         </style>
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<!--
-        <script>
-            $(document).ready(function() {
-                $('#bottom').animate({opacity:"0"},500);
-        </script>
--->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-        
         <link rel="stylesheet" href="./css/mainpage.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     <body>
+
+   
+
+        <script>
+            // For background pictures //
+            imgslide();
+            function imgslide() {
+            $val=$("#slide").attr("val");
+            $mx=$("#slide").attr("mx");
+            $("#img"+$val).hide();
+            if($val==$mx){$val=1;}
+            else{$val++;}
+            $("#img"+$val).fadeIn(500);
+            $("#slide").attr('val',$val);
+            setTimeout('imgslide()', 7000);
+            }
+            // For background pictures //
+            </script>
+                    
         <div id="wrapper">
             <div id="first">
                 <div id="navi">
                     <div class="aclass">Log-in</div>
                     <div class="aclass">asdfa</div>
                 </div>
+                <div id="slide" val="1" mx="5">
+                        <li id="img1"><img src="1.jpg"></li>
+                        <li id="img2"><img src="2.jpg"></li>
+                        <li id="img3"><img src="3.jpg"></li>
+                        <li id="img4"><img src="4.jpg"></li>
+                        <li id="img5"><img src="5.jpg"></li>
+                </div>
                 <div id="bottom">scroll</div>
             </div>
             <div id="second">
                 <img id="secondpic" src="./pictures/secondpic.png">;
-<<<<<<< HEAD
-=======
-                <div>alkdjsflkajsdfl</div>
-            </div>  
-            <div id="last">
-<!--            Deleted the placeholder message 'registering...'-->
->>>>>>> 3a7591ab74359272d0e1aadb732bb1f36d8ff9f4
             </div>
             <div id="FAQ">
                     <div class="wrapper">
