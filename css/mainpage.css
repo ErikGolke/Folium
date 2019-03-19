@@ -1,0 +1,47 @@
+
+h1 {
+    text-align: center;
+}
+.wrapper {
+    text-align: center;
+    width: 85%;
+    margin-left: 7.5%;
+}
+#container {
+    background-color: lightgreen;
+    border-radius: 7px;
+    height: auto;
+    margin-bottom: 10px;
+    padding-bottom: 1px;
+}
+#questioncontainer {
+    height: auto;
+}
+.question {
+    text-align: justify;
+    width: 95%;
+}
+.question > h2 {
+    display: inline-block;
+    width: 95%;
+}
+.plusicon {
+    display: inline-block;
+    float: right;
+    position: relative;
+    top: 20px;
+    font-size: 20pt;
+}
+.question:hover {
+    cursor: pointer;
+}
+.answer {
+    display: none;
+    margin-top: -45px;
+    margin-left: -10px;
+}
+
+.answer {
+    text-align: justify;
+    padding: 10px 0 0 25px;
+}
