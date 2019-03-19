@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="css/styles.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBfhX8hm-A3IAn2us9ybZiP_GWg-H-5sC8",
+    authDomain: "folium-93435.firebaseapp.com",
+    databaseURL: "https://folium-93435.firebaseio.com",
+    projectId: "folium-93435",
+    storageBucket: "folium-93435.appspot.com",
+    messagingSenderId: "700685483452"
+  };
+  firebase.initializeApp(config);
+</script>
+	<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+</head>
+<body>
+	<button onclick="download()">download</button>
+	<img id="myimg" src="">
+<script>
+function download () {
+	var storage = firebase.storage();
+	var storageRef = storage.ref();
+	storageRef.child("jon jon/images/1553018197035-plant1.jpg").getDownloadURL().then(function(url) {
+	  // `url` is the download URL for 'images/stars.jpg'
+
+	  // This can be downloaded directly:
+	  var xhr = new XMLHttpRequest();
+	  xhr.responseType = 'blob';
+	  xhr.onload = function(event) {
+		var blob = xhr.response;
+	  };
+	  xhr.open('GET', url);
+	  xhr.send();
+
+	  // Or inserted into an <img> element:
+	  var img = document.getElementById('myimg');
+	  img.src = url;
+	}).catch(function(error) {
+		console.log("OH FUKK");
+	});
+}
+</script>
+</body>
+</html>
