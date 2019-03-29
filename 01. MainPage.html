@@ -10,8 +10,6 @@
             body {
                 font-family:'Ubuntu', sans-serif;
             }
-
-
             /*First page Erik's picture for background blurred image*/
             #background-image {
                 background-image:url('./pictures/background.png');
@@ -36,17 +34,37 @@
                 top:30%;
                 left:15%;
             }
+            #pagelink:link {
+                color:white;
+                text-decoration: none;
+                font-size:45px;
+            }
+            #pagelink:hover {
+                color:white;
+                text-decoration: none;
+                font-size:45px;
+            }
+            #pagelink:visited {
+                color:white;
+                text-decoration: none;
+                font-size:45px;
+            }
+            #pagelink:active {
+                color:white;
+                text-decoration: none;
+                font-size:45px;
+            }
             /* the end of first page for main theme*/
             /*  /////////////////////////////// */
 
 
             /*first page three buttons*/
             #aclass1, #aclass2 {
-                border:1px solid #222222;
+                color:white;
                 display:inline-block;
-                background-color:antiquewhite;
-                width:100px;
-                height:30px;
+                width:150px;
+                font-size:35px;
+                height:150px;
                 position:absolute;
                 top:10%;
                 text-align: center;
@@ -62,10 +80,14 @@
                 position:absolute;
                 top:85%;
                 left:50%;
-                width:20px;
+                width:50px;
                 height:20px;
                 font-size: 50px;
                 color:black;
+            }
+            #scrolldown {
+                width:50px;
+                height:40px;
             }
             /*  end of first page three buttons*/
             /*  /////////////////////////////// */
@@ -142,12 +164,11 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     <body>
-        
         <div id="background-image"></div>
-        <div id="mainpage">Folium<br>John Erik Yun<br>For Your house plants..asdfqwer.</div>
+        <div id="mainpage"><a id="pagelink" href="02. First Page(My plant).html">Folium<br>John Erik Yun<br>For Your house plants..asdfqwer.</a></div>
         <div id="aclass1">Log-in</div>
         <div id="aclass2">asdfa</div>
-        <div id="aclass3">∨</div>
+        <div id="aclass3"><img id= "scrolldown" src="pictures/scrolldown.png"></div>
         <script>
             $(document).ready(function() {
                 $("#aclass3").click(function() {
@@ -184,11 +205,10 @@
                     <li id="img3"><img src="./pictures/3.jpg"></li>
                     <li id="img4"><img src="./pictures/4.jpg"></li>
                     <li id="img5"><img src="./pictures/5.jpg"></li>
+                </div>
             </div>
-            </div>
-                <img id="secondpic" src="./pictures/secondpic.png">;
-
-            </div>  
+                
+        </div>  
 
 <<<<<<< Updated upstream
 >>>>>>> Stashed changes
