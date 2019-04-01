@@ -24,12 +24,13 @@
 </head>
 <body>
 	<button onclick="download()">download</button>
+	<button onclick="getMeta()">getMeta</button>
 	<img id="myimg" src="">
 <script>
 function download () {
 	var storage = firebase.storage();
 	var storageRef = storage.ref();
-	storageRef.child("jon jon/images/1553018197035-plant1.jpg").getDownloadURL().then(function(url) {
+	storageRef.child("luke hoggballs/images/1553204357272-techmini2.png").getDownloadURL().then(function(url) {
 	  // `url` is the download URL for 'images/stars.jpg'
 
 	  // This can be downloaded directly:
@@ -46,6 +47,20 @@ function download () {
 	  img.src = url;
 	}).catch(function(error) {
 		console.log("OH FUKK");
+	});
+}
+function getMeta() {
+	var storage = firebase.storage();
+	var storageRef = storage.ref();
+
+	// Create a reference to the file whose metadata we want to retrieve
+	var forestRef = storageRef.child('jon jon/images/');
+	console.log(forestRef);
+	// Get metadata properties
+	forestRef.getMetadata().then(function(metadata) {
+	  // Metadata now contains the metadata for 'images/forest.jpg'
+	}).catch(function(error) {
+	  // Uh-oh, an error occurred!
 	});
 }
 </script>
