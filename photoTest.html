@@ -26,11 +26,27 @@
 	<button onclick="download()">download</button>
 	<button onclick="getMeta()">getMeta</button>
 	<img id="myimg" src="">
+	<p id="login"></p>
 <script>
+firebase.auth().onAuthStateChanged(function(user) {
+	var user = firebase.auth().currentUser;
+	var name;
+
+	if (user != null) {
+ 		 name = user.displayName;
+	}
+    if (user) {
+		document.getElementById("login").innerHTML = name;
+    }else {
+   	 console.log("Not signed in");
+ 	 }
+});
+
 function download () {
+console.log(name);
 	var storage = firebase.storage();
 	var storageRef = storage.ref();
-	storageRef.child("luke hoggballs/images/1553204357272-techmini2.png").getDownloadURL().then(function(url) {
+	storageRef.child(name + "/images/1554091375292-8c1.png").getDownloadURL().then(function(url) {
 	  // `url` is the download URL for 'images/stars.jpg'
 
 	  // This can be downloaded directly:
@@ -46,7 +62,7 @@ function download () {
 	  var img = document.getElementById('myimg');
 	  img.src = url;
 	}).catch(function(error) {
-		console.log("OH FUKK");
+		console.log("Something went wrong.");
 	});
 }
 function getMeta() {
@@ -54,7 +70,7 @@ function getMeta() {
 	var storageRef = storage.ref();
 
 	// Create a reference to the file whose metadata we want to retrieve
-	var forestRef = storageRef.child('jon jon/images/');
+		var forestRef = storageRef.child(name + '/images/');
 	console.log(forestRef);
 	// Get metadata properties
 	forestRef.getMetadata().then(function(metadata) {

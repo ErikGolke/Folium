@@ -34,7 +34,7 @@
 			<a class="button" href="./neighbours.html">Neighbours</a>
 			<a class="button" href="./challenges.html">Challenges</a>
 			<a class="button" href="./about.html">About</a>
-
+	<a class="button" href="./photoTest.html">PhotoTest</a>
 			<button onclick="logout()">Logout</button>
 		</nav>
 	</div>
@@ -101,18 +101,7 @@ function upload() {
 	  .then(snapshot => snapshot.ref.getDownloadURL())
 	  .then((url) => {
 		var user = firebase.auth().currentUser;
-
-		console.log(url);
-		// Get a key for a new Post.
- 	//	 var newPostKey = firebase.database().ref().child('posts').push().key;
-	 // Write the new post's data simultaneously in the posts list and the user's post list.
- 	// var updates = {};
-  //	updates['/posts/' + newPostKey] = postData;
- //	 updates['/user-posts/' + user + '/' + newPostKey] = postData;
-
-		firebase.database().ref("users/" + user.displayName).set({
-		photoURL : [url]
-		});
+		firebase.database().ref("users/" + user.displayName + "/photoURL/").push({url});
 		document.querySelector('#photo').src = url;
 	  })
 	  .catch(console.error);
