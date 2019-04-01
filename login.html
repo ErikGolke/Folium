@@ -32,7 +32,6 @@ var ui = new firebaseui.auth.AuthUI(firebase.auth());
 <div id="firebaseui-auth-container"></div>
 <div id="loader">Loading...</div>
 <script>
-var lastPage = window.history.back(-1);
 var uiConfig = {
   callbacks: {
     signInSuccessWithAuthResult: function(authResult, redirectUrl) {
@@ -49,7 +48,7 @@ var uiConfig = {
   },
   // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
   signInFlow: 'popup',
-  signInSuccessUrl: lastPage,
+  signInSuccessUrl: '02. First Page(My plant).html',
   signInOptions: [
     // Leave the lines as is for the providers you want to offer your users.
     firebase.auth.EmailAuthProvider.PROVIDER_ID,
