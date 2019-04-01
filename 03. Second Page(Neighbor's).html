@@ -2,6 +2,9 @@
 <html>
     <head>
         <link href="css/style_updated(navi).css" rel="stylesheet">
+<!--        Added dropdown css stylesheet -- Raging-->
+        <link href="css/dropdown.css" rel="stylesheet">
+
         <style>
             #filter {
                 border:1px solid #ff2341;
@@ -157,9 +160,43 @@
                 <div id="filter">
                     <ul>
                         <li class="filterdetail">Filtered by</li>
-                        <li class="filterdetail">Plants</li>
-                        <li class="filterdetail">Near by</li>
-                        <li class="filterdetail">etc</li>
+<!--                        Added in drop down for following buttons -- Raging-->
+                        <div class="dropdown">
+                            <a onclick="neardropDownFunction()" class="navigation dropbtn">
+                                <li class="filterdetail">
+                                    Plants
+                                </li>
+                            </a>
+                            <div id="neardropdown" class="dropdowncontent">
+                                <a>Link 4</a>
+                                <a>Link 5</a>
+                                <a>Link 6</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <a onclick="near_bydropDownFunction()" class="navigation dropbtn">
+                            <li class="filterdetail">
+                                Near by
+                            </li>
+                            </a>
+                            <div id="near_bydropdown" class="dropdowncontent">
+                                <a>Link 7</a>
+                                <a>Link 8</a>
+                                <a>Link 9</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <a onclick="etcdropDownFunction()" class="navigation dropbtn">
+                            <li class="filterdetail">
+                                etc
+                            </li>
+                            </a>
+                            <div id="etcdropdown" class="dropdowncontent">
+                                <a>Link 10</a>
+                                <a>Link 11</a>
+                                <a>Link 12</a>
+                            </div>
+                        </div>
                     </ul>
                 </div>
                 <div id="neighborcontents">
@@ -251,6 +288,9 @@
                 }
             }
         </script>
+<!--        Added source script for drow down -- Raging-->
+        <script src="javascript/dropdown.js"></script>
+
 <!--        Dropdown scripting practice end - Raging-->
     </body>
     
