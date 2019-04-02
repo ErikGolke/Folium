@@ -25,7 +25,12 @@
 <body>
 	<button onclick="download()">download</button>
 	<button onclick="getMeta()">getMeta</button>
-	<img id="myimg" src="">
+    <div id="imgContainer">
+    <img id="myimg" src="">
+    <img id="myimg" src="">
+    <img id="myimg" src="">
+    <img id="myimg" src="">
+    </div>
 	<p id="login"></p>
 <script>
 firebase.auth().onAuthStateChanged(function(user) {
@@ -50,7 +55,6 @@ function snapshotToArray(snapshot) {
 
         returnArr.push(item);
     });
-	console.log(returnArr);
     return returnArr;
 };
 function download () {
@@ -58,39 +62,27 @@ function download () {
 	var storageRef = storage.ref();
 	var user = firebase.auth().currentUser;
 	var name;
-	var childData;
-	var urlArray = [];
+	var urlArray;
 
 	if (user != null) {
  		 name = user.displayName;
 	}
-console.log(name);
-	var urlList = firebase.database().ref('users/' + name + '/photoURL');
-	urlList.on('value', function(snapshot) {
-		urlArray =	snapshotToArray(snapshot);
-	}).then(function(){
-	console.log(urlArray);
-});
 
-	storageRef.refFromURL(urlArray[0]).then(function(url) {
-//	storageRef.child(name + "/images/1554091375292-8c1.png").getDownloadURL().then(function(url) {
-	  // `url` is the download URL for 'images/stars.jpg'
-
-	  // This can be downloaded directly:
-	  var xhr = new XMLHttpRequest();
-	  xhr.responseType = 'blob';
-	  xhr.onload = function(event) {
-		var blob = xhr.response;
-	  };
-	  xhr.open('GET', url);
-	  xhr.send();
-
-	  // Or inserted into an <img> element:
-	  var img = document.getElementById('myimg');
-	  img.src = url;
-	}).catch(function(error) {
-		console.log("Something went wrong.");
-	});
+    var urlList = firebase.database().ref('users/' + name + '/photoURL');
+    
+    urlList.on('value', function(snapshot) {
+        urlArray =	snapshotToArray(snapshot);
+        console.log(urlArray);
+        });
+    
+        var images = document.getElementById("imgContainer").childNodes;
+        console.log("length: " + images.length);
+        console.log("urls: " + urlArray.length);
+        console.log(images);
+        for (var i = 0; i < images.length; i++) {
+        //var img = document.getElementById('myimg');
+        images[i].src = urlArray[i];
+        }
 }
 function getMeta() {
 	var storage = firebase.storage();

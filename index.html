@@ -101,7 +101,7 @@ function upload() {
 	  .then(snapshot => snapshot.ref.getDownloadURL())
 	  .then((url) => {
 		var user = firebase.auth().currentUser;
-		firebase.database().ref("users/" + user.displayName + "/photoURL/").update(url);
+		firebase.database().ref("users/" + user.displayName + "/photoURL/").push(url);
 		document.querySelector('#photo').src = url;
 	  })
 	  .catch(console.error);
