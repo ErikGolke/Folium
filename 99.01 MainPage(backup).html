@@ -40,9 +40,9 @@
                 font-size:45px;
             }
             #pagelink:hover {
-                color:red;
+                color:white;
                 text-decoration: none;
-                font-size:55px;
+                font-size:45px;
             }
             #pagelink:visited {
                 color:white;
@@ -85,14 +85,9 @@
                 font-size: 50px;
                 color:black;
             }
-
             #scrolldown {
                 width:50px;
                 height:40px;
-            }
-            #scrolldown:hover {
-                width:70px;
-                height:60px;
             }
             /*  end of first page three buttons*/
             /*  /////////////////////////////// */
@@ -162,25 +157,6 @@
             #second {
                 height:700px;
             }
-
-            #aclass4 {
-                position:absolute;
-                top:200%;
-                left:50%;
-                width:50px;
-                height:20px;
-                font-size: 50px;
-                color:black;
-            }
-            #scrolldown2 {
-                width:50px;
-                height:40px;
-            }
-            #scrolldown2:hover {
-                width:70px;
-                height:60px;
-            }
-
             #secondpic {
                 width:400px;
                 height:450px;
@@ -195,26 +171,10 @@
                 width:100%;
                 height:700px;
                 border:1px solid black;
-                background-image:url('./pictures/background5.jpeg');
-                background-repeat:no-repeat;
-                background-position:center;
-                background-size:1400px, 700px; 
             }
-            #FAQ h1 {
+            h1 {
                 width:100%;
                 height:100px;
-                line-height:70px;
-            }
-            .container {
-                background-color: rgb(172, 235, 172);
-                border-radius: 10px;
-                margin:0 auto;
-                width:80%;
-                height: auto;
-                margin-bottom: 10px;
-                padding-bottom: 1px;
-                padding-left: 10px;
-                display:none;
             }
         </style>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -240,22 +200,21 @@
             }); //end ready
         
         </script>
-
         <script>
-            // For background pictures on Second slides //
-            imgslide();
-            function imgslide() {
-            $val=$("#slide").attr("val");
-            $mx=$("#slide").attr("mx");
-            $("#img"+$val).hide();
-            if($val==$mx){$val=1;}
-            else{$val++;}
-            $("#img"+$val).fadeIn(500);
-            $("#slide").attr('val',$val);
-            setTimeout('imgslide()', 4000);
-            }
-            // For background pictures //
-        </script>       
+                // For background pictures on Second slides //
+                imgslide();
+                function imgslide() {
+                $val=$("#slide").attr("val");
+                $mx=$("#slide").attr("mx");
+                $("#img"+$val).hide();
+                if($val==$mx){$val=1;}
+                else{$val++;}
+                $("#img"+$val).fadeIn(500);
+                $("#slide").attr('val',$val);
+                setTimeout('imgslide()', 4000);
+                }
+                // For background pictures //
+                </script>       
         <div id="wrapper">
             <div id="second">
                 <div id="slide" val="1" mx="5">
@@ -275,15 +234,13 @@
                     
                     I love Project 1 class!
                 </div>
-                
-                <div id="aclass4"><img id= "scrolldown2" src="pictures/scrolldown.png"></div>
             </div>
                 
         </div>  
 
             <div id="FAQ">
-                    <h1>Frequently Asked Questions !</h1>
-                    <div class="container">
+                    <h1>FAQS</h1>
+                    <div id="container">
                         <div id="question1" class="question">
                              <h2>What is Folium?</h2>
                             <div class="plusicon">
@@ -294,7 +251,7 @@
                         </div>
                         </div>
                     </div>
-                    <div class="container">
+                    <div id="container">
                         <div id="questioncontainer">
                             <div id="question2" class="question">
                                 <h2>Do I have to pay to become a member?</h2>
@@ -307,7 +264,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="container">
+                    <div id="container">
                         <div id="questioncontainer">
                             <div id="question3" class="question">
                                 <h2>My region is blocked, is there a way to still become a member?</h2>
@@ -320,7 +277,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="container">
+                    <div id="container">
                         <div id="questioncontainer">
                             <div id="question4" class="question">
                                 <h2>How handsome is our Project Manager? Dank Memer pls handsome?</h2>
@@ -333,7 +290,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="container">
+                    <div id="container">
                         <div id="questioncontainer">
                             <div id="question5" class="question">
                                 <h2> Why do I have to use your website?</h2>
@@ -358,20 +315,5 @@
     }
         </script>
 -->
-
-<script>
-    $(document).ready(function() {
-        $("#aclass4").click(function() {
-            $('html, body').animate({
-                scrollTop:$('#FAQ').offset().top
-            },300);
-            $('.container').fadeIn(1000);
-        })//end click
-        $("#aclass4").click(function() {
-
-        })
-    }); //end ready
-
-</script>
     </body>
 </html>

@@ -22,6 +22,39 @@
                 float:left;
                 margin-left:0;
             }
+            /*Starting dropdown*/
+            #dm_ul {
+                min-width:300px;
+                background-color:white;
+                text-align:center;
+            }
+            #filter ul ul {
+                position:absolute;
+                display:none;
+            }
+            #filter ul ul li{
+                display:block;
+                background-color:lightgray;
+                color:white;
+            }
+            #filter ul li {
+                display:inline-block;
+                margin-left:-5.5px;
+                height:50px;
+            }
+            #filter ul li a {
+                display:block;
+                width:150px;
+                color:black;
+                height:50px;
+            }
+            #filter ul li a:hover {
+                background-color:gray;
+                color:black;
+                height:50px;
+            }
+            /*Ending dropdown*/
+
             #neighborcontents {
                 width:100%;
                 height:600px;
@@ -96,27 +129,13 @@
         <script>
             
             $(document).ready(function() {
-                $('.smallpictures a').click(function(evt){
-                    evt.preventDefault();
-
-                    var imgPath=$(this).attr('href');
-                    var oldImage=$('#bigpic img');
-
-                    var newImage=$('<img src="' + imgPath +'">');
-                    newImage.hide();
-
-			        
-                    $('#bigpic').prepend(newImage);
-                    newImage.fadeIn(1000);
-                    oldImage.fadeOut(1000,function(){
-		            $(this).remove();
-			    	});
-
-                }); //end click
-                $('.smallpictures a:first').click();
+                $('#filter ul li').hover(function() {
+                    $(this).find('ul').stop().fadeToggle(300);
+                });
             });//end ready
             
         </script>
+
 
     </head>
     <body>
@@ -155,11 +174,24 @@
 <!--            common area end-->
             <div id="contents">
                 <div id="filter">
-                    <ul>
-                        <li class="filterdetail">Filtered by</li>
-                        <li class="filterdetail">Plants</li>
-                        <li class="filterdetail">Near by</li>
-                        <li class="filterdetail">etc</li>
+                    <ul id="dm_ul">
+                        <li class="filterdetail">Filtered by
+    
+                        </li>
+                        <li class="filterdetail"><a>Plants</a>
+                            <ul>
+                                <li><a>Flower</a></li>      
+                                <li><a>Flower2</a></li>      
+                                <li><a>Flower3</a></li>      
+                            </ul>
+                        </li>
+                        <li class="filterdetail">Near by
+                            <ul>
+                                <li><a>10km</a></li>      
+                                <li><a>20km</a></li>      
+                                <li><a>30km</a></li>      
+                            </ul>
+                        </li>
                     </ul>
                 </div>
                 <div id="neighborcontents">
