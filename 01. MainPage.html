@@ -60,6 +60,7 @@
 
             /*first page three buttons*/
             #aclass1, #aclass2 {
+				text-decoration: none;
                 color:white;
                 display:inline-block;
                 width:150px;
@@ -217,6 +218,27 @@
                 display:none;
             }
         </style>
+<<<<<<< HEAD
+=======
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+			<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
+			<script>
+			  // Initialize Firebase
+			  var config = {
+				apiKey: "AIzaSyBfhX8hm-A3IAn2us9ybZiP_GWg-H-5sC8",
+				authDomain: "folium-93435.firebaseapp.com",
+				databaseURL: "https://folium-93435.firebaseio.com",
+				projectId: "folium-93435",
+				storageBucket: "folium-93435.appspot.com",
+				messagingSenderId: "700685483452"
+			  };
+			  firebase.initializeApp(config);
+			</script>
+
+		<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+>>>>>>> 8993687673ca0143f848b6d7bc2ef56c4d3203c2
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <link rel="stylesheet" href="./css/mainpage.css">
@@ -226,8 +248,8 @@
     <body>
         <div id="background-image"></div>
         <div id="mainpage"><a id="pagelink" href="02. First Page(My plant).html">Folium<br>John Erik Yun<br>For Your house plants..asdfqwer.</a></div>
-        <div id="aclass1">Log-in</div>
-        <div id="aclass2">asdfa</div>
+		<a id="aclass1" href="./login.html">Login</a>
+        <a id="aclass2" href="" onclick="logout()">Logout</a>
         <div id="aclass3"><img id= "scrolldown" src="pictures/scrolldown.png"></div>
         <script>
             $(document).ready(function() {
@@ -280,7 +302,10 @@
             </div>
                 
         </div>  
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8993687673ca0143f848b6d7bc2ef56c4d3203c2
             <div id="FAQ">
                     <h1>Frequently Asked Questions !</h1>
                     <div class="container">
@@ -374,4 +399,27 @@
 
 </script>
     </body>
+<script>
+firebase.auth().onAuthStateChanged(function(user) {
+	var user = firebase.auth().currentUser;
+	var name;
+
+	if (user != null) {
+ 		 name = user.displayName;
+	}
+    if (user) {
+		document.getElementById("aclass1").innerHTML = name;
+    }else {
+   	 console.log("Not signed in");
+ 	 }
+});
+function logout() {
+	firebase.auth().signOut().then(function() {
+		console.log('Signed Out');
+		document.getElementById("login").innerHTML = "Login";
+	}, function(error) {
+ 		console.error('Sign Out Error', error);
+	});
+}
+</script>
 </html>

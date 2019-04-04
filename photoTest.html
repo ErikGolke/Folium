@@ -24,12 +24,85 @@
 </head>
 <body>
 	<button onclick="download()">download</button>
-	<img id="myimg" src="">
+	<button onclick="getMeta()">getMeta</button>
+    <div id="imgContainer">
+    <img id="myimg" src="">
+    <img id="myimg" src="">
+    <img id="myimg" src="">
+    <img id="myimg" src="">
+    </div>
+	<p id="login"></p>
 <script>
+firebase.auth().onAuthStateChanged(function(user) {
+	var user = firebase.auth().currentUser;
+	var name;
+
+	if (user != null) {
+ 		 name = user.displayName;
+	}
+    if (user) {
+		document.getElementById("login").innerHTML = name;
+    }else {
+   	 console.log("Not signed in");
+ 	 }
+});
+function snapshotToArray(snapshot) {
+    var returnArr = [];
+
+    snapshot.forEach(function(childSnapshot) {
+        var item = childSnapshot.val();
+        item.key = childSnapshot.key;
+
+        returnArr.push(item);
+    });
+    return returnArr;
+};
 function download () {
 	var storage = firebase.storage();
 	var storageRef = storage.ref();
-	storageRef.child("jon jon/images/1553018197035-plant1.jpg").getDownloadURL().then(function(url) {
+	var user = firebase.auth().currentUser;
+	var name;
+	var urlArray;
+
+	if (user != null) {
+ 		 name = user.displayName;
+	}
+
+    var urlList = firebase.database().ref('users/' + name + '/photoURL');
+    
+    urlList.on('value', function(snapshot) {
+        urlArray =	snapshotToArray(snapshot);
+        console.log(urlArray);
+        });
+    
+        var images = document.getElementById("imgContainer").childNodes;
+        console.log("length: " + images.length);
+        console.log("urls: " + urlArray.length);
+        console.log(images);
+        for (var i = 0; i < images.length; i++) {
+        //var img = document.getElementById('myimg');
+        images[i].src = urlArray[i];
+        }
+}
+function getMeta() {
+	var storage = firebase.storage();
+	var storageRef = storage.ref();
+
+	// Create a reference to the file whose metadata we want to retrieve
+		var forestRef = storageRef.child(name + '/images/');
+	console.log(forestRef);
+	// Get metadata properties
+	forestRef.getMetadata().then(function(metadata) {
+	  // Metadata now contains the metadata for 'images/forest.jpg'
+	}).catch(function(error) {
+	  // Uh-oh, an error occurred!
+	});
+}
+function download2 () {
+console.log(name);
+	var storage = firebase.storage();
+	var storageRef = storage.ref();
+	storageRef.child(name + "/images/1554091375292-8c1.png").getDownloadURL().then(function(url) {
 	  // `url` is the download URL for 'images/stars.jpg'
 
 	  // This can be downloaded directly:
@@ -45,7 +118,7 @@ function download () {
 	  var img = document.getElementById('myimg');
 	  img.src = url;
 	}).catch(function(error) {
-		console.log("OH FUKK");
+		console.log("Something went wrong.");
 	});
 }
 </script>
