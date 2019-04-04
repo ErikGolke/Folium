@@ -51,31 +51,17 @@
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        
         <script>
-            
-            $(document).ready(function() {
-                $('.smallpictures a').click(function(evt){
-                    evt.preventDefault();
-
-                    var imgPath=$(this).attr('href');
-                    var oldImage=$('#bigpic img');
-
-                    var newImage=$('<img src="' + imgPath +'">');
-                    newImage.hide();
-
-			        
-                    $('#bigpic').prepend(newImage);
-                    newImage.fadeIn(1000);
-                    oldImage.fadeOut(1000,function(){
-		            $(this).remove();
-			    	});
-
-                }); //end click
-                $('.smallpictures a:first').click();
-            });//end ready
-            
+        $(document).ready(function() {
+            $('.img2').fancybox({
+                width:'90%',
+                height:'90%',
+                titlePosition: 'outside'
+            });
+        });
         </script>
-
     </head>
     <body>
         <div id="wrapper">
@@ -86,18 +72,9 @@
                                 <a>｜</a>
                                 <a class="navigation" href="01. MainPage.html">Home</a>
                                 <a>｜</a>
-<!--        practicing drop down menu - Raging-->
-                        <div class="dropdown">
-                                    <a onclick="dropDownFunction()" class="navigation dropbtn">My Flower</a>
-                                <div id="myflowerdropdown" class="dropdowncontent">
-                                    <a>Link 1</a>
-                                    <a>Link 2</a>
-                                    <a>Link 3</a>
-                                </div>
-                        </div>
-<!--            practice end - Raging-->
+                                <a class="navigation" href="02. First Page(My plant).html">My Flower</a>
                                 <a>｜</a>
-                                <a class="navigation">Neighbor's </a>
+                                <a class="navigation" href="03. Second Page(Neighbor's).html">Neighbor's </a>
                                 <a>｜</a>
                                 <a class="navigation" href="04. about.html">About</a>
                                 <a>｜</a>
@@ -111,7 +88,7 @@
                 <div id="gallery">
                     <div class="box">
                         <div class="innerbox">
-                            <img class="img" src="css/images/flowers/flower1.jpg">
+                            <a rel="fancybox" class="img2" href="#"><img class="img" src="css/images/flowers/flower1.jpg"></a>
                             <div class="titleBox">
                                 <div class="title">
                                     Sage

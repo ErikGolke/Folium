@@ -7,9 +7,8 @@
 
         <style>
             #filter {
-                border:1px solid #ff2341;
                 width:100%;
-                height:60px;
+                height:50px;
                 margin:0 auto;
             }
             ul {
@@ -24,6 +23,8 @@
                 margin:0 auto;
                 float:left;
                 margin-left:0;
+                margin-right:0;
+                line-height:50px;
             }
             /*Starting dropdown*/
             #dm_ul {
@@ -42,12 +43,11 @@
             }
             #filter ul li {
                 display:inline-block;
-                margin-left:-5.5px;
                 height:50px;
             }
             #filter ul li a {
                 display:block;
-                width:150px;
+                width:100px;
                 color:black;
                 height:50px;
             }
@@ -59,10 +59,10 @@
             /*Ending dropdown*/
 
             #neighborcontents {
-                width:100%;
+                width:99.9%;
                 height:600px;
-                border:1px solid blue;
                 margin:0 auto;
+                border:1px solid black;
             }
             #firstrow {
                 width:90%;
@@ -150,16 +150,7 @@
                                 <a>｜</a>
                                 <a class="navigation" href="01. MainPage.html">Home</a>
                                 <a>｜</a>
-<!--        practicing drop down menu - Raging-->
-                        <div class="dropdown">
-                                    <a onclick="dropDownFunction()" class="navigation dropbtn">My Flower</a>
-                                <div id="myflowerdropdown" class="dropdowncontent">
-                                    <a>Link 1</a>
-                                    <a>Link 2</a>
-                                    <a>Link 3</a>
-                                </div>
-                        </div>
-<!--            practice end - Raging-->
+                                <a class="navigation" href="02. First Page(My plant).html">My Flower</a>
                                 <a>｜</a>
                                 <a class="navigation">Neighbor's </a>
                                 <a>｜</a>
@@ -189,7 +180,7 @@
                                 <li><a>Flower3</a></li>      
                             </ul>
                         </li>
-                        <li class="filterdetail">Near by
+                        <li class="filterdetail"><a>Near by</a>
                             <ul>
                                 <li><a>10km</a></li>      
                                 <li><a>20km</a></li>      
