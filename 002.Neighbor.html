@@ -6,6 +6,8 @@
 
 
     </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
     <div id="naviBar">
@@ -109,5 +111,30 @@
             Address : BCIT Student resident, Nisga'a D 551 
         </div>
     </div>
-    
+    <script>
+        $(function() {
+            var prevScroll=0,
+                curDir='down',
+                prevDir='up';
+            $(window).scroll(function() {
+                if($(this).scrollTop() >=prevScroll) {
+                    curDir='down';
+                    if(curDir !=prevDir) {
+                        $('#naviBar').stop();
+                        $('#naviBar').animate({top:'-100px'}, 300);
+                        prevDir=curDir;
+                    }else {
+                        curDir='up';
+                        if(curDir !=prevDir) {
+                            $('#naviBar').stop();
+                            $('#naviBar').animate({top:'0px'},300);
+                            prevDir=curDir;
+                        }
+                    }
+                }
+                prevScroll=$(this).scrollTop();
+            });//window end
+            
+        })
+    </script>
 </body>

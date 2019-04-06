@@ -214,7 +214,7 @@
 
 /*-----------------------------------------------------------*/
 /*4.About start-*/
-        #contents-2 img {
+        #contents-2 > img {
             width:400px;
             height:300px;
         }

@@ -28,8 +28,9 @@
             }); //end click
             $('.picture a:first').click();
         });//end ready
-
     </script>
+    
+    
 </head>
 <body>
     <div id="naviBar">
@@ -52,9 +53,9 @@
         <div id="contents-2">
             <h3>Keep track of your plants by registering them to "My Plants"</h3>
             <ul>
-                <li>Plants 1</li>
-                <li>Plants 2</li>
-                <li>Plants 3</li>
+                <li class="navilist">Plants 1</li>
+                <li class="navilist">Plants 2</li>
+                <li class="navilist">Plants 3</li>
             </ul>
         </div>
         <div id="contents-3">
@@ -101,5 +102,31 @@
             Address : BCIT Student resident, Nisga'a D 551 
         </div>
     </div>
+    <script>
+        $(function() {
+            var prevScroll=0,
+                curDir='down',
+                prevDir='up';
+            $(window).scroll(function() {
+                if($(this).scrollTop() >=prevScroll) {
+                    curDir='down';
+                    if(curDir !=prevDir) {
+                        $('#naviBar').stop();
+                        $('#naviBar').animate({top:'-100px'}, 300);
+                        prevDir=curDir;
+                    }else {
+                        curDir='up';
+                        if(curDir !=prevDir) {
+                            $('#naviBar').stop();
+                            $('#naviBar').animate({top:'0px'},300);
+                            prevDir=curDir;
+                        }
+                    }
+                }
+                prevScroll=$(this).scrollTop();
+            });//window end
+            
+        })
+        </script>
     
 </body>
