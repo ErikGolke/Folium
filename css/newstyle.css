@@ -1,0 +1,183 @@
+/*-----------------------------------------------------------*/
+/*Common Area start*/        
+    /*Navi bar start*/
+        body {
+            font-family:'Ubuntu', sans-serif;
+        }
+        #naviBar {
+            background:white;
+            position:fixed;
+            top:0px;
+            left:0px;
+            width:100%;
+            height:80px;
+            border:1px solid lightgray;
+        }
+        #naviBar-img {
+            margin-left:20px;
+            width:150px;
+            height:70px;
+            float:left;
+        }
+        #naviBar-ul1 {
+            list-style: none;
+            width:50%;
+            margin-top:0px;
+            overflow:hidden;
+        }
+        #naviBar li {
+            float:left;
+            text-align: center;
+            margin-left:25px;
+            font-size:20px;
+            color:black;
+            width:150px;
+            height:80px;
+            line-height:80px;
+            
+        } 
+        .navilist:hover {
+            background-color:lightgray;
+            width:30px;
+        }
+        #naviBar-ul2 {
+            position:absolute;
+            list-style: none;
+            top:-15px;
+            left:70%;
+        }
+    /*Navi bar end*/
+    /*footer start*/
+        #footer {
+            margin-top:50px;
+            background:rgb(173, 240, 173);
+            width:100%;
+            height:180px;
+        }
+    /*footer end*/
+/*Common Area- end-*/   
+/*-----------------------------------------------------------*/
+/*1.My Plants start-*/   
+    /*Contents 1 start*/
+
+        #contents-3 {
+            border:1px solid red;
+            margin-top:100px;
+            height:500px;
+        }
+        #contents-3-left,#contents-3-center,#contents-3-right {
+            border:1px solid blue;
+            float:left;
+        }
+        #contents-3-left {
+            width:20%;
+            margin-left:150px;
+            margin-right:20px;
+            height:450px;
+        }
+        #contents-3-center {
+            width:35%;
+            margin-right:20px;
+            height:450px;
+        }
+        #contents-3-right {
+            width:25%;
+            height:450px;
+        }
+        #contents-3-left-pic1, #contents-3-left-pic2, #contents-3-left-pic3 {
+            width:100%;
+            height:33%;
+            margin-bottom:10px;
+        }
+        #contents-3-left-pic1 img, #contents-3-left-pic2 img , #contents-3-left-pic3 img {
+            width:70%;
+            height:100%;
+            border-radius:20px;
+        }
+
+/*-----------------------------------------------------------*/
+/*2.Neighbor start-*/   
+    /*Contents 1 start*/
+        #contents {
+            padding-top:160px;
+            margin:0 auto;
+            text-align: center;
+        }
+        #contents-1 {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            background:rgb(198, 243, 198);
+        }
+        #contents h2 {
+            font-size: 40px;
+        }
+        #contents-1-nav {
+            width:30%;
+            margin:0 auto;
+        }
+        #contents-1-nav-search {
+            width:95%;
+            height:65px;
+            line-height:20px;
+            margin:0 auto;
+        }
+        #contents-1-nav-search #input{
+            width:60%;
+            height:20px;
+        }
+    /*Contents 1 end*/
+        
+    /*Contents 2 start*/     
+        #contents-2 {
+            margin-top:30px;
+        }
+        #row1-neighbor, #row2-neighbor,#row3-neighbor, #row4-neighbor {
+            margin:0 auto;
+            margin-top:40px;
+            width:95%;
+            height:350px;
+            margin-bottom:20px;
+        }
+        .grid {
+            width:24%;
+            height:340px;
+            border:1px solid lightgray;
+            display:inline-block;
+            margin:0 auto;
+        }
+        .image {
+            width:99%;
+            height:100%;
+            margin:0 auto;
+        }
+        #contents-2-loading {
+            margin:0 auto;
+        }
+    /*Contents 2 end*/
+/*2.Neighbor end-*/
+/*-----------------------------------------------------------*/
+
+/*-----------------------------------------------------------*/
+/*3.Rank Start-*/
+        #contents-2 ul, #contents-3 ul{
+            width:40%;
+            margin:0 auto;
+        }
+        #contents-2 li, #contents-3 li{
+            float:left;
+            list-style: none;
+            border:1px solid lightgray;
+            margin:0 auto;
+            text-align: center;
+            width:33%;
+            height:50px;
+            line-height:50px;
+            font-size:20px;
+        }
+        #row1-ranking, #row2-ranking {
+            margin:0 auto;
+            margin-top:80px;
+            width:95%;
+            height:350px;
+            margin-bottom:20px;
+        }
