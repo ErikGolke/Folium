@@ -4,6 +4,32 @@
     <style>
         @import url(https://fonts.googleapis.com/css?family=Ubuntu);
     </style>
+     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     <script>    
+        $(document).ready(function() {
+            $('.picture a').click(function(evt){
+                evt.preventDefault();
+
+                var imgPath=$(this).attr('href');
+                var oldImage=$('#contents-3-center-pic1 img');
+
+                var newImage=$('<img src="' + imgPath +'">');
+                newImage.hide();
+
+                
+                $('#contents-3-center-pic1').prepend(newImage);
+                
+                oldImage.fadeOut(1000, function(){
+                $(this).remove();
+                });
+                newImage.fadeIn(1000);
+
+            }); //end click
+            $('.picture a:first').click();
+        });//end ready
+
+    </script>
 </head>
 <body>
     <div id="naviBar">
@@ -12,7 +38,7 @@
             <a href="#"><li class="navilist">My Flower</li></a>
             <a href="002.Neighbor.html"><li class="navilist">Neighbor's</li></a>
             <a href="003.Ranking.html"><li class="navilist">Ranking</li></a>
-            <a href="004.About.html"><li class="navilist">About</li></a>
+            <a href="004.About.html"><li class="navilist">About us</li></a>
         </ul>
         <ul id="naviBar-ul2">
             <li>Log in</li>
@@ -33,14 +59,14 @@
         </div>
         <div id="contents-3">
             <div id="contents-3-left">
-                <div id="contents-3-left-pic1">
-                    <img src="pictures/001.jpg">
+                <div id="contents-3-left-pic1" class="picture">
+                    <a href="pictures/001.jpg"> <img src="pictures/001.jpg"></a>
                 </div>
-                <div id="contents-3-left-pic2">
-                    <img src="pictures/002.jpg">
+                <div id="contents-3-left-pic2" class="picture">
+                    <a href="pictures/002.jpg"><img src="pictures/002.jpg"></a>
                 </div>
-                <div id="contents-3-left-pic3">
-                    <img src="pictures/003.jpg">
+                <div id="contents-3-left-pic3" class="picture">
+                    <a href="pictures/003.jpg"><img src="pictures/003.jpg"></a>
                 </div>
             </div>
             <div id="contents-3-center">
@@ -50,15 +76,30 @@
             </div>
             <div id="contents-3-right">
                 <div>
-                    <h4>adkjsfladjsf</h4>
-                    <p>akdsfj wqlkejr lasdkjf lk</p>
-                    <p>akldsjglwej glkq weqjg l</p>
+                    <h4>Name of your plant</h4>
+                    <p>Rose</p>
+
+                    <h4>Age</h4>
+                    <p>Since 2014.Feb</p>
+
+                    <h4>Recent Comment</h4>
+                    <p>This is super beautiful</p>
+                    <p>This is super good</p>
+                    <p>This is super amazing</p>
+                    <p>This is super fantastic</p>
+                    
+                    <h4>Tag</h4>
+                    <p>rose red</p>
                 </div>
             </div>
         </div>
     </div>
     <div id="footer">
-                
+        <div>
+            Folium<br>
+            Telephone : 250-328-2656<Br>
+            Address : BCIT Student resident, Nisga'a D 551 
+        </div>
     </div>
     
 </body>

@@ -21,7 +21,7 @@
         }
         #naviBar-ul1 {
             list-style: none;
-            width:50%;
+            width:800px;
             margin-top:0px;
             overflow:hidden;
         }
@@ -44,7 +44,11 @@
             position:absolute;
             list-style: none;
             top:-15px;
-            left:70%;
+            left:1100px;
+        }
+        #naviBar-ul2 li {
+            margin-right:1px;
+            margin-left:1px;
         }
     /*Navi bar end*/
     /*footer start*/
@@ -53,6 +57,13 @@
             background:rgb(173, 240, 173);
             width:100%;
             height:180px;
+            font-size:20px;
+        }
+        #footer div {
+            margin-left:50px;
+            padding-top:50px;
+            font-size:15px;
+            line-height:30px;
         }
     /*footer end*/
 /*Common Area- end-*/   
@@ -61,12 +72,10 @@
     /*Contents 1 start*/
 
         #contents-3 {
-            border:1px solid red;
             margin-top:100px;
             height:500px;
         }
         #contents-3-left,#contents-3-center,#contents-3-right {
-            border:1px solid blue;
             float:left;
         }
         #contents-3-left {
@@ -74,6 +83,9 @@
             margin-left:150px;
             margin-right:20px;
             height:450px;
+        }
+        #contents-3-left img{
+            border:2px solid lightgray;
         }
         #contents-3-center {
             width:35%;
@@ -83,6 +95,20 @@
         #contents-3-right {
             width:25%;
             height:450px;
+        }
+        #contents-3-right h4 {
+            text-align: left;
+            font-size:20px;
+            margin-left:25px;
+        }
+        #contents-3-right p {
+            text-align: left;
+            margin-left:35px;
+        }
+        #contents-3-center-pic1 img {
+            width:500px;
+            height:465px;
+            border:1px solid lightgray;
         }
         #contents-3-left-pic1, #contents-3-left-pic2, #contents-3-left-pic3 {
             width:100%;
@@ -122,8 +148,9 @@
             margin:0 auto;
         }
         #contents-1-nav-search #input{
-            width:60%;
-            height:20px;
+            width:350px;
+            height:30px;
+            border-radius:15px;
         }
     /*Contents 1 end*/
         
@@ -160,7 +187,7 @@
 /*-----------------------------------------------------------*/
 /*3.Rank Start-*/
         #contents-2 ul, #contents-3 ul{
-            width:40%;
+            width:600px;
             margin:0 auto;
         }
         #contents-2 li, #contents-3 li{
@@ -180,4 +207,18 @@
             width:95%;
             height:350px;
             margin-bottom:20px;
+        }
+/*3.Rank End-*/
+/*-----------------------------------------------------------*/
+
+
+/*-----------------------------------------------------------*/
+/*4.About start-*/
+        #contents-2 img {
+            width:400px;
+            height:300px;
+        }
+        #contents-2 p {
+            font-size:35px;
+            line-height:55px;
         }
