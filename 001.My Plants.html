@@ -83,8 +83,23 @@
                     <a href="pictures/003.jpg"><img src="pictures/003.jpg"></a>
                 </div>
             </div>
+            <!-- Uploads photo to firebase -->
             <div id="contents-3-center">
                 <div id="contents-3-center-pic1">
+                  <input type="file"
+                       id="photo" name="photo"
+                       accept="image/png, image/jpeg, image/jpg">
+                	<button id= "upload" onclick="upload()">Upload</button>
+                  <!-- The Modal -->
+              <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p>Successful Upload</p>
+                </div>
+
+              </div>
 
                 </div>
             </div>
@@ -183,26 +198,71 @@
         </script>
 </body>
 <script>
-firebase.auth().onAuthStateChanged(function(user) {
- var user = firebase.auth().currentUser;
- var name;
+// Get the modal
+var modal = document.getElementById('myModal');
 
- if (user != null) {
-    name = user.displayName;
- }
-   if (user) {
-   document.getElementById("login").innerHTML = name;
-   }else {
-    console.log("Not signed in");
+// Get the button that opens the modal
+var btn = document.getElementById("upload");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
   }
+}
+firebase.auth().onAuthStateChanged(function(user) {
+	var user = firebase.auth().currentUser;
+	var name;
+
+	if (user != null) {
+ 		 name = user.displayName;
+	}
+    if (user) {
+		document.getElementById("login").innerHTML = name;
+    }else {
+   	 console.log("Not signed in");
+ 	 }
 });
+
 function logout() {
- firebase.auth().signOut().then(function() {
-   console.log('Signed Out');
-   document.getElementById("login").innerHTML = "Login";
- }, function(error) {
-   console.error('Sign Out Error', error);
- });
+	firebase.auth().signOut().then(function() {
+		console.log('Signed Out');
+		document.getElementById("login").innerHTML = "Login";
+	}, function(error) {
+ 		console.error('Sign Out Error', error);
+	});
+}
+function upload() {
+	var user = firebase.auth().currentUser.displayName;
+	const ref = firebase.storage().ref();
+	const file = document.querySelector('#photo').files[0];
+	const name = (+new Date()) + '-' + file.name;
+	const metadata = {
+	  contentType: file.type
+	};
+	const task = ref.child(user + "/images/" + name).put(file, metadata);
+	task
+	  .then(snapshot => snapshot.ref.getDownloadURL())
+	  .then((url) => {
+		var user = firebase.auth().currentUser;
+		firebase.database().ref("users/" + user.displayName + "/photoURL/").push(url);
+		document.querySelector('#photo').src = url;
+	  })
+	  .catch(console.error);
+    document.getElementById("photo").value = "";
 }
 </script>
 </html>

@@ -1,5 +1,5 @@
 /*-----------------------------------------------------------*/
-/*Common Area start*/        
+/*Common Area start*/
     /*Navi bar start*/
         body {
             font-family:'Ubuntu', sans-serif;
@@ -35,8 +35,8 @@
             width:150px;
             height:80px;
             line-height:80px;
-            
-        } 
+
+        }
         .navilist:hover {
             background-color:lightgray;
             width:30px;
@@ -71,9 +71,9 @@
             font-weight: 800;
         }
     /*footer end*/
-/*Common Area- end-*/   
+/*Common Area- end-*/
 /*-----------------------------------------------------------*/
-/*1.My Plants start-*/   
+/*1.My Plants start-*/
     /*Contents 1 start*/
 
         #contents-3 {
@@ -184,7 +184,7 @@
             position: relative;
             top: 10px;
             width: 15%;
-        } 
+        }
         .paragraphBox {
             display: inline-block;
             width: 80%;
@@ -223,10 +223,49 @@
             border-radius: 20px;
             height: auto;
         }
-    
+        /*Popup window for a successful photo upload*/
+        /* The Modal (background) */
+        .modal {
+          display: none; /* Hidden by default */
+          position: fixed; /* Stay in place */
+          z-index: 1; /* Sit on top */
+          padding-top: 100px; /* Location of the box */
+          left: 0;
+          top: 0;
+          width: 100%; /* Full width */
+          height: 100%; /* Full height */
+          overflow: auto; /* Enable scroll if needed */
+          background-color: rgb(0,0,0); /* Fallback color */
+          background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+          background-color: #fefefe;
+          margin: auto;
+          padding: 20px;
+          border: 1px solid #888;
+          width: 80%;
+        }
+
+        /* The Close Button */
+        .close {
+          color: #aaaaaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+          color: #000;
+          text-decoration: none;
+          cursor: pointer;
+        }
+
 
 /*-----------------------------------------------------------*/
-/*2.Neighbor start-*/   
+/*2.Neighbor start-*/
     /*Contents 1 start*/
         #contents {
             padding-top:160px;
@@ -257,8 +296,8 @@
             border-radius:15px;
         }
     /*Contents 1 end*/
-        
-    /*Contents 2 start*/     
+
+    /*Contents 2 start*/
         #contents-2 {
             margin-top:30px;
         }
