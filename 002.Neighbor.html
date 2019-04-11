@@ -12,7 +12,7 @@
     <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
     <script>
       // Initialize Firebase
-      var config = {
+      var config = {    
       apiKey: "AIzaSyBfhX8hm-A3IAn2us9ybZiP_GWg-H-5sC8",
       authDomain: "folium-93435.firebaseapp.com",
       databaseURL: "https://folium-93435.firebaseio.com",
@@ -116,7 +116,7 @@
     <div id="popup-container" class="popup-container2">
         <img id="popup-img" src="#">
         <div id="here"></div>
-        <button id="buttonforExit">asdf</button>
+        <button id="buttonforExit">Close</button>
     </div>
 
     <div id="footer">
@@ -137,11 +137,11 @@
                 $('#popup-outer')
             });
             $("#image1").click(function(){
-                var temporary="<div id='there'><div>ID: Sangwook Yun</div><div>Age : 10, from Aug 2018</div></div>";
+                var temporary="<div id='there'><div><b>ID :</b> Sangwook Yun</div><div><b>Category : </b>Palm Plants</div><div><b>tag : </b>#Palm, #houseplants, #easy</div><div><b>Age : </b>10, from Aug 2018</div><div='RC'><b>Recent comment</b><img src='pictures/comment.png'></div></div>";
                 $("#here").append(temporary);
             });
-            $("buttonforExit").click(function() {
-                $("#popup-container").css("visibility", "hidden");
+            $("#buttonforExit").click(function() {
+                $("#popup-container").hide()
             });
         });
      firebase.auth().onAuthStateChanged(function(user) {
