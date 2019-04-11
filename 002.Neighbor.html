@@ -112,7 +112,7 @@
             </div>
         </div>
     </div>
-
+<!--???????????????????????????????????????????????????????????-->
     <div id="popup-container" class="popup-container2">
         <img id="popup-img" src="#">
         <div>asdfasdf</div>
@@ -152,6 +152,7 @@
 
         })
     </script>
+<!--    ?????????????????????????????????????????????????????????????-->
     <script>
         $(document).ready(function() {
             $(".image").click(function() {
@@ -161,31 +162,29 @@
                 $('#popup-outer')
             });
         });
-<<<<<<< HEAD
         
-    // firebase.auth().onAuthStateChanged(function(user) {
-    //  var user = firebase.auth().currentUser;
-    //  var name;
+     firebase.auth().onAuthStateChanged(function(user) {
+      var user = firebase.auth().currentUser;
+      var name;
 
-    //  if (user != null) {
-    //     name = user.displayName;
-    //  }
-    //    if (user) {
-    //    document.getElementById("login").innerHTML = name;
-    //    }else {
-    //     console.log("Not signed in");
-    //   }
-    // });
-    // function logout() {
-    //  firebase.auth().signOut().then(function() {
-    //    console.log('Signed Out');
-    //    document.getElementById("login").innerHTML = "Login";
-    //  }, function(error) {
-    //    console.error('Sign Out Error', error);
-    //  });
-    // }
+      if (user != null) {
+         name = user.displayName;
+      }
+        if (user) {
+        document.getElementById("login").innerHTML = name;
+        }else {
+         console.log("Not signed in");
+       }
+     });
+     function logout() {
+      firebase.auth().signOut().then(function() {
+        console.log('Signed Out');
+        document.getElementById("login").innerHTML = "Login";
+      }, function(error) {
+        console.error('Sign Out Error', error);
+      });
+     }
 
-=======
     firebase.auth().onAuthStateChanged(function(user) {
      var user = firebase.auth().currentUser;
      var name;
@@ -207,6 +206,5 @@
        console.error('Sign Out Error', error);
      });
     }
->>>>>>> 3121b35c057d164874d7fbd715e4672400599424
     </script>
 </body>
