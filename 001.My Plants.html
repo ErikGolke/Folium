@@ -44,12 +44,6 @@
             $('.picture a:first').click();
         });//end ready
     </script>
-    <!--    --Making the login for this html specifically disappear-- Raging ---->
-    <style>
-        #login {
-            display: none;
-        }
-    </style>
 </head>
 <body>
     <div id="naviBar">
@@ -61,7 +55,7 @@
             <a href="004.About.html"><li class="navilist">About us</li></a>
         </ul>
         <ul id="naviBar-ul2">
-            <a href="./login.html"><li  id="login" class="navilist">Login</li></a>
+            <a href="./login.html"><li id="login" class="navilist">Login</li></a>
             <a id="logout" onclick="logout()"><li class="navilist">Logout</li></a>
         </ul>
     </div>
@@ -80,13 +74,13 @@
         <div id="contents-3">
             <div id="contents-3-left">
                 <div id="contents-3-left-pic1" class="picture">
-                    <a href="pictures/001.jpg"> <img src="pictures/001.jpg"></a>
+                    <a class= "links" href="pictures/001.jpg"> <img class= "loadImage" src="pictures/001.jpg"></a>
                 </div>
                 <div id="contents-3-left-pic2" class="picture">
-                    <a href="pictures/002.jpg"><img src="pictures/002.jpg"></a>
+                    <a class= "links" href="pictures/002.jpg"><img class= "loadImage" src="pictures/002.jpg"></a>
                 </div>
                 <div id="contents-3-left-pic3" class="picture">
-                    <a href="pictures/003.jpg"><img src="pictures/003.jpg"></a>
+                    <a class= "links" href="pictures/003.jpg"><img class= "loadImage" src="pictures/003.jpg"></a>
                 </div>
             </div>
             <!-- Uploads photo to firebase -->
@@ -95,7 +89,7 @@
                   <input type="file"
                        id="photo" name="photo"
                        accept="image/png, image/jpeg, image/jpg">
-                	<button id= "upload" onclick="upload()">Upload</button>
+                	<button onclick="upload()">Upload</button>
                   <!-- The Modal -->
               <div id="myModal" class="modal">
 
@@ -214,21 +208,21 @@ var btn = document.getElementById("upload");
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal
-btn.onclick = function() {
-  modal.style.display = "block";
-}
+//btn.onclick = function() {
+//  modal.style.display = "block";
+//}
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
+//span.onclick = function() {
+//  modal.style.display = "none";
+//}
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
+//window.onclick = function(event) {
+//  if (event.target == modal) {
+//    modal.style.display = "none";
+//  }
+//}
 firebase.auth().onAuthStateChanged(function(user) {
 	var user = firebase.auth().currentUser;
 	var name;
@@ -242,7 +236,55 @@ firebase.auth().onAuthStateChanged(function(user) {
    	 console.log("Not signed in");
  	 }
 });
+function snapshotToArray(snapshot) {
+    var returnArr = [];
 
+    snapshot.forEach(function(childSnapshot) {
+        var item = childSnapshot.val();
+        item.key = childSnapshot.key;
+
+        returnArr.push(item);
+    });
+    return returnArr;
+};
+
+window.addEventListener("load", function() {
+  setTimeout(function() {
+	var storage = firebase.storage();
+	var storageRef = storage.ref();
+	var user = firebase.auth().currentUser;
+	var name;
+	var urlArray;
+
+	if (user != null) {
+ 		 name = user.displayName;
+	}
+
+    var urlList = firebase.database().ref('users/' + name + '/photoURL');
+
+    urlList.on('value', function(snapshot) {
+        urlArray =	snapshotToArray(snapshot);
+        console.log(urlArray);
+        });
+				setTimeout(function() {
+	        var images = document.getElementsByClassName('loadImage')
+          var links = document.getElementsByClassName('links')
+
+	        console.log("length: " + images.length);
+					console.log(images);
+	        console.log("urls: " + urlArray.length);
+	        console.log(images);
+	        for (var i = 0; i < images.length; i++) {
+            if(urlArray.length < 3) {
+            return;
+            }
+	        //var img = document.getElementById('myimg');
+	        images[i].src = urlArray[i];
+          links[i].href = urlArray[i];
+	        }
+				}, 1000);
+      }, 1000);
+});
 function logout() {
 	firebase.auth().signOut().then(function() {
 		console.log('Signed Out');

@@ -22,12 +22,6 @@
       };
       firebase.initializeApp(config);
     </script>
-    <!--    --Making the login for this html specifically disappear-- Raging ---->
-    <style>
-        #login {
-            display: none;
-        }
-    </style>
 </head>
 <body>
     <div id="naviBar">
@@ -124,7 +118,7 @@
         <div>asdfasdf</div>
         <button>asdf</button>
     </div>
-    
+
     <div id="footer">
         <div>
             Folium<br>
@@ -167,6 +161,7 @@
                 $('#popup-outer')
             });
         });
+<<<<<<< HEAD
         
     // firebase.auth().onAuthStateChanged(function(user) {
     //  var user = firebase.auth().currentUser;
@@ -190,5 +185,28 @@
     //  });
     // }
 
+=======
+    firebase.auth().onAuthStateChanged(function(user) {
+     var user = firebase.auth().currentUser;
+     var name;
+
+     if (user != null) {
+        name = user.displayName;
+     }
+       if (user) {
+       document.getElementById("login").innerHTML = name;
+       }else {
+        console.log("Not signed in");
+      }
+    });
+    function logout() {
+     firebase.auth().signOut().then(function() {
+       console.log('Signed Out');
+       document.getElementById("login").innerHTML = "Login";
+     }, function(error) {
+       console.error('Sign Out Error', error);
+     });
+    }
+>>>>>>> 3121b35c057d164874d7fbd715e4672400599424
     </script>
 </body>
