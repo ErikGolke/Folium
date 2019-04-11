@@ -171,31 +171,7 @@
             Address : BCIT Student resident, Nisga'a D 551
          </div>
     </div>
-    <script>
-        $(function() {
-            var prevScroll=0,
-                curDir='down',
-                prevDir='up';
-            $(window).scroll(function() {
-                if($(this).scrollTop() >=prevScroll) {
-                    curDir='down';
-                    if(curDir !=prevDir) {
-                        $('#naviBar').stop();
-                        $('#naviBar').animate({top:'-100px'}, 300);
-                        prevDir=curDir;
-                    }else {
-                        curDir='up';
-                        if(curDir !=prevDir) {
-                            $('#naviBar').stop();
-                            $('#naviBar').animate({top:'0px'},300);
-                            prevDir=curDir;
-                        }
-                    }
-                }
-                prevScroll=$(this).scrollTop();
-            });//window end
-        })
-        </script>
+   
 </body>
 <script>
 // Get the modal

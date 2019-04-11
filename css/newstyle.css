@@ -100,7 +100,7 @@
         #contents-3-right {
             width:25%;
             height:450px;
-            position: relative;
+            /*position: relative;*/
             top: -13px;
         }
         #contents-3-right h4 {
