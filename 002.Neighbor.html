@@ -159,7 +159,6 @@
         })
     </script>
     <script>
-<<<<<<< HEAD
         $(document).ready(function() {
             $(".image").click(function() {
                 var num=$(this).attr('src');
@@ -168,28 +167,28 @@
                 $('#popup-outer')
             });
         });
-=======
-    firebase.auth().onAuthStateChanged(function(user) {
-     var user = firebase.auth().currentUser;
-     var name;
+        
+    // firebase.auth().onAuthStateChanged(function(user) {
+    //  var user = firebase.auth().currentUser;
+    //  var name;
 
-     if (user != null) {
-        name = user.displayName;
-     }
-       if (user) {
-       document.getElementById("login").innerHTML = name;
-       }else {
-        console.log("Not signed in");
-      }
-    });
-    function logout() {
-     firebase.auth().signOut().then(function() {
-       console.log('Signed Out');
-       document.getElementById("login").innerHTML = "Login";
-     }, function(error) {
-       console.error('Sign Out Error', error);
-     });
-    }
->>>>>>> b064070d18785e7af9d76ec52e7793cca522aaa3
+    //  if (user != null) {
+    //     name = user.displayName;
+    //  }
+    //    if (user) {
+    //    document.getElementById("login").innerHTML = name;
+    //    }else {
+    //     console.log("Not signed in");
+    //   }
+    // });
+    // function logout() {
+    //  firebase.auth().signOut().then(function() {
+    //    console.log('Signed Out');
+    //    document.getElementById("login").innerHTML = "Login";
+    //  }, function(error) {
+    //    console.error('Sign Out Error', error);
+    //  });
+    // }
+
     </script>
 </body>
