@@ -1,4 +1,5 @@
 <!doctype html>
+<html>
 <head>
     <link href="css/newstyle.css" rel="stylesheet">
     <style>
@@ -6,7 +7,21 @@
     </style>
      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-     <script>    
+     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
+     <script>
+       // Initialize Firebase
+       var config = {
+       apiKey: "AIzaSyBfhX8hm-A3IAn2us9ybZiP_GWg-H-5sC8",
+       authDomain: "folium-93435.firebaseapp.com",
+       databaseURL: "https://folium-93435.firebaseio.com",
+       projectId: "folium-93435",
+       storageBucket: "folium-93435.appspot.com",
+       messagingSenderId: "700685483452"
+       };
+       firebase.initializeApp(config);
+     </script>
+     <script>
         $(document).ready(function() {
             $('.picture a').click(function(evt){
                 evt.preventDefault();
@@ -17,9 +32,9 @@
                 var newImage=$('<img src="' + imgPath +'">');
                 newImage.hide();
 
-                
+
                 $('#contents-3-center-pic1').prepend(newImage);
-                
+
                 oldImage.fadeOut(1000, function(){
                 $(this).remove();
                 });
@@ -29,8 +44,12 @@
             $('.picture a:first').click();
         });//end ready
     </script>
-    
-    
+    <!--    --Making the login for this html specifically disappear-- Raging ---->
+    <style>
+        #login {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <div id="naviBar">
@@ -42,8 +61,8 @@
             <a href="004.About.html"><li class="navilist">About us</li></a>
         </ul>
         <ul id="naviBar-ul2">
-            <li>Log in</li>
-            <li>Sign up</li>
+            <a href="./login.html"><li  id="login" class="navilist">Login</li></a>
+            <a id="logout" onclick="logout()"><li class="navilist">Logout</li></a>
         </ul>
     </div>
     <div id="contents">
@@ -70,37 +89,93 @@
                     <a href="pictures/003.jpg"><img src="pictures/003.jpg"></a>
                 </div>
             </div>
+            <!-- Uploads photo to firebase -->
             <div id="contents-3-center">
                 <div id="contents-3-center-pic1">
+                  <input type="file"
+                       id="photo" name="photo"
+                       accept="image/png, image/jpeg, image/jpg">
+                	<button id= "upload" onclick="upload()">Upload</button>
+                  <!-- The Modal -->
+              <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p>Successful Upload</p>
+                </div>
+
+              </div>
 
                 </div>
             </div>
             <div id="contents-3-right">
-                <div>
-                    <h4>Name of your plant</h4>
-                    <p>Rose</p>
+                    <h4>Plant Type</h4>
+                    <div class="plantTypeBox">
+                        <p>Bolivian Fern</p>
+                    </div>
 
                     <h4>Age</h4>
-                    <p>Since 2014.Feb</p>
+                    <div class="ageBox">
+                        <p>1 years old</p>
+                    </div>
+                    <div id="recentCommentsWrapper">
+                        <h4>Recent Comments</h4>
+                        <div class="commentsContainer">
+                            <div class="comments">
+                                <div class="commentBox">
+                                    <div class="imgBox">
+                                        <img class="testface" src="pictures/testface.jpg">
+                                    </div>
+                                    <div class="paragraphBox">
+                                        <p>
+                                        <span class="commentMover">
+                                        I'm in love with this plant where did you get it?</span><span class="postdate"> 2 hours ago</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="commentBox">
+                                    <div class="imgBox">
+                                        <img class="testface" src="pictures/dummyhead2.jpg">
+                                    </div>
+                                    <div class="paragraphBox">
+                                        <p>
+                                        <span class="commentMover">
+                                        I'm in love with this plant where did you get it?</span><span class="postdate"> 22 hours ago</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="commentBox">
+                                    <div class="imgBox">
+                                        <img class="testface" src="pictures/dummyhead3.jpg">
+                                    </div>
+                                    <div class="paragraphBox">
+                                        <p>
+                                        <span class="commentMover">
+                                        I'm in love with this plant where did you get it?</span><span class="postdate"> 2 days ago</span>
+                                        </p>
+                                    </div>
+                                </div>
 
-                    <h4>Recent Comment</h4>
-                    <p>This is super beautiful</p>
-                    <p>This is super good</p>
-                    <p>This is super amazing</p>
-                    <p>This is super fantastic</p>
-                    
-                    <h4>Tag</h4>
-                    <p>rose red</p>
-                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Tag</h4>
+                        <div class="tagBox">
+                            <p>#<small>rose</small>#<small>redrose</small>#<small>beautifulplants</small>#<small>nature</small></p>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
     <div id="footer">
         <div>
+            <br>
             Folium<br>
-            Telephone : 250-328-2656<Br>
-            Address : BCIT Student resident, Nisga'a D 551 
-        </div>
+            Telephone : 250-328-2656<br>
+            Address : BCIT Student resident, Nisga'a D 551
+         </div>
     </div>
     <script>
         $(function() {
@@ -125,8 +200,75 @@
                 }
                 prevScroll=$(this).scrollTop();
             });//window end
-            
         })
         </script>
-    
 </body>
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("upload");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+firebase.auth().onAuthStateChanged(function(user) {
+	var user = firebase.auth().currentUser;
+	var name;
+
+	if (user != null) {
+ 		 name = user.displayName;
+	}
+    if (user) {
+		document.getElementById("login").innerHTML = name;
+    }else {
+   	 console.log("Not signed in");
+ 	 }
+});
+
+function logout() {
+	firebase.auth().signOut().then(function() {
+		console.log('Signed Out');
+		document.getElementById("login").innerHTML = "Login";
+	}, function(error) {
+ 		console.error('Sign Out Error', error);
+	});
+}
+function upload() {
+	var user = firebase.auth().currentUser.displayName;
+	const ref = firebase.storage().ref();
+	const file = document.querySelector('#photo').files[0];
+	const name = (+new Date()) + '-' + file.name;
+	const metadata = {
+	  contentType: file.type
+	};
+	const task = ref.child(user + "/images/" + name).put(file, metadata);
+	task
+	  .then(snapshot => snapshot.ref.getDownloadURL())
+	  .then((url) => {
+		var user = firebase.auth().currentUser;
+		firebase.database().ref("users/" + user.displayName + "/photoURL/").push(url);
+		document.querySelector('#photo').src = url;
+	  })
+	  .catch(console.error);
+    document.getElementById("photo").value = "";
+}
+</script>
+</html>

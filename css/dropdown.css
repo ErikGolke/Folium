@@ -1,10 +1,11 @@
+
     .dropdown {
         display: inline-block;
     }
     .dropbtn {
         padding: 16px;
-        font-size: 16px;
-        border: none;
+/*        font-size: 16px;*/
+/*        border: none;*/
         cursor: pointer;
     }
     

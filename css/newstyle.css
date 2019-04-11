@@ -1,8 +1,9 @@
 /*-----------------------------------------------------------*/
-/*Common Area start*/        
+/*Common Area start*/
     /*Navi bar start*/
         body {
             font-family:'Ubuntu', sans-serif;
+            margin: 0;
         }
         #naviBar {
             background:white;
@@ -34,8 +35,8 @@
             width:150px;
             height:80px;
             line-height:80px;
-            
-        } 
+
+        }
         .navilist:hover {
             background-color:lightgray;
             width:30px;
@@ -44,7 +45,7 @@
             position:absolute;
             list-style: none;
             top:-15px;
-            left:1100px;
+            left:1300px;
         }
         #naviBar-ul2 li {
             margin-right:1px;
@@ -53,22 +54,26 @@
     /*Navi bar end*/
     /*footer start*/
         #footer {
-            margin-top:50px;
-            background:rgb(173, 240, 173);
+            margin-top: 10px;
             width:100%;
-            height:180px;
+            height:100px;
             font-size:20px;
         }
         #footer div {
-            margin-left:50px;
-            padding-top:50px;
-            font-size:15px;
-            line-height:30px;
+            position: relative;
+            background:rgb(173, 240, 173);
+            width: 100%;
+            height: 100px;
+            padding-left: 50px;
+            font-size: 15px;
+            line-height: 25px;
+            font-size: 9.5pt;
+            font-weight: 800;
         }
     /*footer end*/
-/*Common Area- end-*/   
+/*Common Area- end-*/
 /*-----------------------------------------------------------*/
-/*1.My Plants start-*/   
+/*1.My Plants start-*/
     /*Contents 1 start*/
 
         #contents-3 {
@@ -95,6 +100,8 @@
         #contents-3-right {
             width:25%;
             height:450px;
+            position: relative;
+            top: -13px;
         }
         #contents-3-right h4 {
             text-align: left;
@@ -120,9 +127,146 @@
             height:100%;
             border-radius:20px;
         }
+        .plantTypeBox {
+            border:0.1px solid black;
+            background-color: #EFEFF1;
+            border-radius: 20px;
+        }
+        .plantTypeBox > p {
+            background-color: #FDFDFD;
+            border-radius: 20px;
+            position: relative;
+            right: 8%;
+            background-color: #FDFDFD;
+            width: 95%;
+            border-radius: 20px;
+            height: auto;
+        }
+        .ageBox{
+            border:0.1px solid black;
+            background-color: #EFEFF1;
+            border-radius: 20px;
+        }
+        .ageBox > p {
+             background-color: #FDFDFD;
+            border-radius: 20px;
+            position: relative;
+            right: 8%;
+            background-color: #FDFDFD;
+            width: 95%;
+            border-radius: 20px;
+            height: auto;
+        }
+        h4 {
+            position: relative;
+            right: 7%;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        .commentsContainer {
+            border: 0.1px solid black;
+            background-color: #EFEFF1;
+            border-radius: 20px;
+            padding-bottom: 5px;
+        }
+        .commentBox {
+            position: relative;
+            left: 1%;
+            top: 5px;
+            background-color: #FDFDFD;
+            width: 95%;
+            border-radius: 20px;
+            height: auto;
+            margin-bottom: 5px;
+        }
+        .imgBox {
+            display: inline-block;
+            position: relative;
+            top: 10px;
+            width: 15%;
+        }
+        .paragraphBox {
+            display: inline-block;
+            width: 80%;
+            position: relative;
+            top: 10pt;
+            font-size: 11pt;
+            height: 70px;
+        }
+        .commentMover {
+            position: relative;
+            right: 10%;
+            top: -12px
+        }
+        .postdate {
+            background-color:aquamarine;
+            font-size: 9.5pt;
+            position: relative;
+            float: right;
+        }
+        .testface {
+            width: 45px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        .tagBox {
+            border:0.1px solid black;
+            background-color: #EFEFF1;
+            border-radius: 20px;
+        }
+        .tagBox > p {
+            background-color: #FDFDFD;
+            border-radius: 20px;
+            position: relative;
+            right: 8%;
+            background-color: #FDFDFD;
+            width: 95%;
+            border-radius: 20px;
+            height: auto;
+        }
+        /*Popup window for a successful photo upload*/
+        /* The Modal (background) */
+        .modal {
+          display: none; /* Hidden by default */
+          position: fixed; /* Stay in place */
+          z-index: 1; /* Sit on top */
+          padding-top: 100px; /* Location of the box */
+          left: 0;
+          top: 0;
+          width: 100%; /* Full width */
+          height: 100%; /* Full height */
+          overflow: auto; /* Enable scroll if needed */
+          background-color: rgb(0,0,0); /* Fallback color */
+          background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+          background-color: #fefefe;
+          margin: auto;
+          padding: 20px;
+          border: 1px solid #888;
+          width: 80%;
+        }
+
+        /* The Close Button */
+        .close {
+          color: #aaaaaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+          color: #000;
+          text-decoration: none;
+          cursor: pointer;
+        }
+
 
 /*-----------------------------------------------------------*/
-/*2.Neighbor start-*/   
+/*2.Neighbor start-*/
     /*Contents 1 start*/
         #contents {
             padding-top:160px;
@@ -153,8 +297,8 @@
             border-radius:15px;
         }
     /*Contents 1 end*/
-        
-    /*Contents 2 start*/     
+
+    /*Contents 2 start*/
         #contents-2 {
             margin-top:30px;
         }
@@ -223,6 +367,7 @@
             font-size:35px;
             line-height:55px;
         }
+<<<<<<< HEAD
 /*4.About end-*/
 /*-----------------------------------------------------------*/
 
@@ -242,3 +387,5 @@
              text-align: center;
              border:1px solid lightgray;
         }
+=======
+>>>>>>> b064070d18785e7af9d76ec52e7793cca522aaa3

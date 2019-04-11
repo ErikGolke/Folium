@@ -1,8 +1,31 @@
 <!doctype html>
+<html>
 <head>
     <link href="css/newstyle.css" rel="stylesheet">
     <style>
         @import url(https://fonts.googleapis.com/css?family=Ubuntu);
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+      apiKey: "AIzaSyBfhX8hm-A3IAn2us9ybZiP_GWg-H-5sC8",
+      authDomain: "folium-93435.firebaseapp.com",
+      databaseURL: "https://folium-93435.firebaseio.com",
+      projectId: "folium-93435",
+      storageBucket: "folium-93435.appspot.com",
+      messagingSenderId: "700685483452"
+      };
+      firebase.initializeApp(config);
+    </script>
+<!--    --Making the login for this html specifically disappear-- Raging ---->
+    <style>
+        #login {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -15,8 +38,8 @@
             <a href="#"><li class="navilist">About us</li></a>
         </ul>
         <ul id="naviBar-ul2">
-            <li>Log in</li>
-            <li>Sign up</li>
+          <a href="./login.html"><li  id="login" class="navilist">Login</li></a>
+          <a id="logout" onclick="logout()"><li class="navilist">Logout</li></a>
         </ul>
     </div>
     <div id="contents">
@@ -24,20 +47,41 @@
             <h2>We would like to contribute to Vancouver Eco city!</h2>
         </div>
         <div id="contents-2">
-            <img src="pictures/overview.jpg"></img>
+            <img src="pictures/overview.jpg">
             <p>
-                Our purpose is to check this <br>
-                Fuck you Eric Chang!
+                Our mission is to create a platform where the passion and appreciation for plants can flourish. The dream is to make this a positive thriving community for people to connect, share, and grow. We wish to share this invaluable dream with everyone.
             </p>
-            
         </div>
     </div>
     <div id="footer">
         <div>
             Folium<br>
-            Telephone : 250-328-2656<Br>
-            Address : BCIT Student resident, Nisga'a D 551 
+            Telephone : 250-328-2656<br>
+            Address : BCIT Student resident, Nisga'a D 551
         </div>
     </div>
-    
 </body>
+<script>
+firebase.auth().onAuthStateChanged(function(user) {
+ var user = firebase.auth().currentUser;
+ var name;
+
+ if (user != null) {
+    name = user.displayName;
+ }
+   if (user) {
+   document.getElementById("login").innerHTML = name;
+   }else {
+    console.log("Not signed in");
+  }
+});
+function logout() {
+ firebase.auth().signOut().then(function() {
+   console.log('Signed Out');
+   document.getElementById("login").innerHTML = "Login";
+ }, function(error) {
+   console.error('Sign Out Error', error);
+ });
+}
+</script>
+</html>
