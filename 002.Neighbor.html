@@ -44,7 +44,7 @@
             <div id="contents-1-nav">
                 <div id="contents-1-nav-search">
                     <input id="input" type="text" placeholder="search">
-                    <input id="input2" type="button" value="Go">
+                    <input id="input2"onclick="download()" type="button" value="Go">
                     <div>ads adfasdf asdf</div>
                 </div>
 
@@ -112,7 +112,7 @@
             </div>
         </div>
     </div>
-<!--???????????????????????????????????????????????????????????-->
+
     <div id="popup-container" class="popup-container2">
         <img id="popup-img" src="#">
         <div>asdfasdf</div>
@@ -126,33 +126,7 @@
             Address : BCIT Student resident, Nisga'a D 551
         </div>
     </div>
-    <script>
-        $(function() {
-            var prevScroll=0,
-                curDir='down',
-                prevDir='up';
-            $(window).scroll(function() {
-                if($(this).scrollTop() >=prevScroll) {
-                    curDir='down';
-                    if(curDir !=prevDir) {
-                        $('#naviBar').stop();
-                        $('#naviBar').animate({top:'-100px'}, 300);
-                        prevDir=curDir;
-                    }else {
-                        curDir='up';
-                        if(curDir !=prevDir) {
-                            $('#naviBar').stop();
-                            $('#naviBar').animate({top:'0px'},300);
-                            prevDir=curDir;
-                        }
-                    }
-                }
-                prevScroll=$(this).scrollTop();
-            });//window end
 
-        })
-    </script>
-<!--    ?????????????????????????????????????????????????????????????-->
     <script>
         $(document).ready(function() {
             $(".image").click(function() {
@@ -162,29 +136,6 @@
                 $('#popup-outer')
             });
         });
-        
-     firebase.auth().onAuthStateChanged(function(user) {
-      var user = firebase.auth().currentUser;
-      var name;
-
-      if (user != null) {
-         name = user.displayName;
-      }
-        if (user) {
-        document.getElementById("login").innerHTML = name;
-        }else {
-         console.log("Not signed in");
-       }
-     });
-     function logout() {
-      firebase.auth().signOut().then(function() {
-        console.log('Signed Out');
-        document.getElementById("login").innerHTML = "Login";
-      }, function(error) {
-        console.error('Sign Out Error', error);
-      });
-     }
-
     firebase.auth().onAuthStateChanged(function(user) {
      var user = firebase.auth().currentUser;
      var name;
@@ -206,5 +157,53 @@
        console.error('Sign Out Error', error);
      });
     }
+    function snapshotToArray(snapshot) {
+        var returnArr = [];
+
+        snapshot.forEach(function(childSnapshot) {
+            var item = childSnapshot.val();
+            item.key = childSnapshot.key;
+
+            returnArr.push(item);
+        });
+        return returnArr;
+    };
+    function download() {
+      setTimeout(function() {
+    	var storage = firebase.storage();
+    	var storageRef = storage.ref();
+    	var user = firebase.auth().currentUser;
+    	var name = document.getElementById("input").value;
+    	var urlArray;
+
+    	if (user != null) {
+     		 name = user.displayName;
+    	}
+
+        var urlList = firebase.database().ref('users/' + name + '/photoURL');
+
+        urlList.on('value', function(snapshot) {
+            urlArray =	snapshotToArray(snapshot);
+            console.log(urlArray);
+            });
+    				setTimeout(function() {
+    	        var images = document.getElementsByClassName('image');
+              var gridItems = document.getElementsByClassName('grid');
+
+    	        console.log("length: " + images.length);
+    					console.log(images);
+    	        console.log("urls: " + urlArray.length);
+    	        console.log(images);
+    	        for (var i = 0; i < images.length; i++) {
+                if(urlArray.length < 3) {
+                return;
+                }
+    	        //var img = document.getElementById('myimg');
+    	        images[i].src = urlArray[i];
+              gridItems[i].style.visibility = "visible";
+    	        }
+    				}, 1000);
+          }, 1000);
+    };
     </script>
 </body>
