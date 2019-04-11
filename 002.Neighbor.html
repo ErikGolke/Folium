@@ -129,20 +129,21 @@
 
 <!--    ?????????????????????????????????????????????????????????????-->
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $(".image").click(function() {
                 var num=$(this).attr('src');
                 $('#popup-img').attr('src',num);
                 $('#popup-container').css("visibility","visible")
                 $('#popup-outer')
             });
-            $("#image1").click(function(){
-                var temporary="<div id='there'><div><b>ID :</b> Sangwook Yun</div><div><b>Category : </b>Palm Plants</div><div><b>tag : </b>#Palm, #houseplants, #easy</div><div><b>Age : </b>10, from Aug 2018</div><div='RC'><b>Recent comment</b><img src='pictures/comment.png'></div></div>";
+            $("#image1").click(function (){
+                var temporary="<div id='there'><div><b>ID :</b> BarrackObama</div><div><b>Category : </b>Palm Plants</div><div><b>tag : </b>#Palm, #houseplants, #easy</div><div><b>Age : </b>10, from Aug 2018</div><div='RC'><b>Recent comment</b><img src='pictures/comment.png'></div></div>";
                 $("#here").append(temporary);
             });
             $("#buttonforExit").click(function() {
-                $("#popup-container").hide()
+                $("#popup-container").hide();
             });
+            
         });
      firebase.auth().onAuthStateChanged(function(user) {
       var user = firebase.auth().currentUser;
