@@ -45,7 +45,7 @@
             position:absolute;
             list-style: none;
             top:-15px;
-            left:1300px;
+            right:10px;
         }
         #naviBar-ul2 li {
             margin-right:1px;
@@ -378,7 +378,7 @@
             left:250px;
             background:white;
             border:1px solid lightgray;
-            visibility: hidden;   
+            visibility: hidden;
         }
         #popup-img {
              width:60%;

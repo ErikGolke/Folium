@@ -43,9 +43,9 @@
             }); //end click
             $('.picture a:first').click();
         });//end ready
-    </script>   
+    </script>
 </head>
-<body onload="download();">
+<body>
     <div id="naviBar">
         <a href="01. MainPage.html"><img id="naviBar-img" src="pictures/folium.jpg"></a>
         <ul id="naviBar-ul1">
@@ -55,12 +55,13 @@
             <a href="004.About.html"><li class="navilist">About us</li></a>
         </ul>
         <ul id="naviBar-ul2">
-            <a href="./login.html"><li  id="login" class="navilist">Login</li></a>
+            <a href="./login.html"><li id="login" class="navilist">Login</li></a>
             <a id="logout" onclick="logout()"><li class="navilist">Logout</li></a>
         </ul>
     </div>
     <div id="contents">
         <div id="contents-1">
+          <button onclick="download()">download</button>
             <h2>Manage your Plant!</h2>
         </div>
         <div id="contents-2">
@@ -89,7 +90,7 @@
                   <input type="file"
                        id="photo" name="photo"
                        accept="image/png, image/jpeg, image/jpg">
-                	<button id= "upload" onclick="upload()">Upload</button>
+                	<button onclick="upload()">Upload</button>
                   <!-- The Modal -->
               <div id="myModal" class="modal">
 
@@ -208,21 +209,21 @@ var btn = document.getElementById("upload");
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal
-btn.onclick = function() {
-  modal.style.display = "block";
-}
+//btn.onclick = function() {
+//  modal.style.display = "block";
+//}
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
+//span.onclick = function() {
+//  modal.style.display = "none";
+//}
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
+//window.onclick = function(event) {
+//  if (event.target == modal) {
+//    modal.style.display = "none";
+//  }
+//}
 firebase.auth().onAuthStateChanged(function(user) {
 	var user = firebase.auth().currentUser;
 	var name;
@@ -236,6 +237,18 @@ firebase.auth().onAuthStateChanged(function(user) {
    	 console.log("Not signed in");
  	 }
 });
+function snapshotToArray(snapshot) {
+    var returnArr = [];
+
+    snapshot.forEach(function(childSnapshot) {
+        var item = childSnapshot.val();
+        item.key = childSnapshot.key;
+
+        returnArr.push(item);
+    });
+    return returnArr;
+};
+
 function download () {
 	var storage = firebase.storage();
 	var storageRef = storage.ref();
