@@ -317,6 +317,7 @@
             border:1px solid lightgray;
             display:inline-block;
             margin:0 auto;
+            visibility: hidden;
         }
         .image {
             width:99%;
