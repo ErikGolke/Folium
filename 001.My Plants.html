@@ -51,7 +51,7 @@
         }
     </style>
 </head>
-<body>
+<body onload="download();">
     <div id="naviBar">
         <a href="01. MainPage.html"><img id="naviBar-img" src="pictures/folium.jpg"></a>
         <ul id="naviBar-ul1">
@@ -80,13 +80,13 @@
         <div id="contents-3">
             <div id="contents-3-left">
                 <div id="contents-3-left-pic1" class="picture">
-                    <a href="pictures/001.jpg"> <img src="pictures/001.jpg"></a>
+                    <a href="pictures/001.jpg"> <img class= "loadImage" src="pictures/001.jpg"></a>
                 </div>
                 <div id="contents-3-left-pic2" class="picture">
-                    <a href="pictures/002.jpg"><img src="pictures/002.jpg"></a>
+                    <a href="pictures/002.jpg"><img class= "loadImage" src="pictures/002.jpg"></a>
                 </div>
                 <div id="contents-3-left-pic3" class="picture">
-                    <a href="pictures/003.jpg"><img src="pictures/003.jpg"></a>
+                    <a href="pictures/003.jpg"><img class= "loadImage" src="pictures/003.jpg"></a>
                 </div>
             </div>
             <!-- Uploads photo to firebase -->
@@ -242,7 +242,35 @@ firebase.auth().onAuthStateChanged(function(user) {
    	 console.log("Not signed in");
  	 }
 });
+function download () {
+	var storage = firebase.storage();
+	var storageRef = storage.ref();
+	var user = firebase.auth().currentUser;
+	var name;
+	var urlArray;
 
+	if (user != null) {
+ 		 name = user.displayName;
+	}
+
+    var urlList = firebase.database().ref('users/' + name + '/photoURL');
+
+    urlList.on('value', function(snapshot) {
+        urlArray =	snapshotToArray(snapshot);
+        console.log(urlArray);
+        });
+				setTimeout(function() {
+	        var images = document.getElementsByClassName('loadImage')
+	        console.log("length: " + images.length);
+					console.log(images);
+	        console.log("urls: " + urlArray.length);
+	        console.log(images);
+	        for (var i = 0; i < images.length; i++) {
+	        //var img = document.getElementById('myimg');
+	        images[i].src = urlArray[i];
+	        }
+				}, 1000);
+}
 function logout() {
 	firebase.auth().signOut().then(function() {
 		console.log('Signed Out');
