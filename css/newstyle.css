@@ -199,9 +199,10 @@
             top: -12px
         }
         .postdate {
+            background-color:aquamarine;
             font-size: 9.5pt;
             position: relative;
-            left: 42%;
+            float: right;
         }
         .testface {
             width: 45px;
