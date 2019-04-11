@@ -57,15 +57,14 @@
         #footer {
             margin-top: 3%;
             width:100%;
-            font-size:20px;
         }
         #footer div {
-            position: relative;
             background:rgb(173, 240, 173);
             width: 100%;
+            height:90px;
             padding-left: 50px;
             font-size: 15px;
-            font-size: 9.5pt;
+            line-height:20px;
             font-weight: 800;
         }
     /*footer end*/
@@ -136,7 +135,8 @@
             position: relative;
             right: 8%;
             background-color: #FDFDFD;
-            width: 95%;
+            padding-left:20px;
+            width: 90%;
             border-radius: 20px;
             height: auto;
         }
@@ -149,9 +149,10 @@
              background-color: #FDFDFD;
             border-radius: 20px;
             position: relative;
+            padding-left:20px;
             right: 8%;
             background-color: #FDFDFD;
-            width: 95%;
+            width: 90%;
             border-radius: 20px;
             height: auto;
         }
@@ -217,8 +218,9 @@
             position: relative;
             right: 8%;
             background-color: #FDFDFD;
-            width: 95%;
+            width: 90%;
             border-radius: 20px;
+            padding-left:20px;
             height: auto;
         }
         /*Popup window for a successful photo upload*/
@@ -387,7 +389,7 @@
         #popup-img {
             float:left;
              width:50%;
-             height:60%;
+             height:80%;
              margin:0 auto;
              text-align: center;
              border:1px solid lightgray;
@@ -396,6 +398,17 @@
              margin-right:10px;
         }
         #here {
-            color:red;
+            float:left;
+            margin-top:20px;
+            width:35%;
+            color:black;
             font-size:20px;
+            text-align:left;
+            margin-left:30px;
+            height:80%;
+            background-color:blue;
+        }
+        #there {
+        }
+        #buttonforExit {
         }
