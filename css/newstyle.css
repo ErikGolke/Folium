@@ -381,7 +381,8 @@
             visibility: hidden;
         }
         #popup-img {
-             width:90%;
+            float:left;
+             width:50%;
              height:60%;
              margin:0 auto;
              text-align: center;
@@ -390,6 +391,7 @@
              margin-left:10px;
              margin-right:10px;
         }
-        #contentsPopup {
-            
+        #here {
+            color:red;
+            font-size:20px;
         }

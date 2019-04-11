@@ -44,13 +44,8 @@
             <div id="contents-1-nav">
                 <div id="contents-1-nav-search">
                     <input id="input" type="text" placeholder="search">
-<<<<<<< HEAD
-                    <input id="input2" type="button" value="Go">
+                    <input id="input2" onclick="download()" type="button" value="Go">
                     <div>e.g) User's name, type of plants</div>
-=======
-                    <input id="input2"onclick="download()" type="button" value="Go">
-                    <div>ads adfasdf asdf</div>
->>>>>>> 8e5c8fb082640d3adac8bbba594b4761c2455848
                 </div>
 
             </div>
@@ -120,8 +115,8 @@
 <!--???????????????????????????????????????????????????????????-->
     <div id="popup-container" class="popup-container2">
         <img id="popup-img" src="#">
-        <div>asdfasdf</div>
-        <button>asdf</button>
+        <div id="here"></div>
+        <button id="buttonforExit">asdf</button>
     </div>
 
     <div id="footer">
@@ -131,12 +126,8 @@
             Address : BCIT Student resident, Nisga'a D 551
         </div>
     </div>
-<<<<<<< HEAD
-    <div id=contentsPopup>askldjf qkwjerlk askldjf qwelkrj </div>
-<!--    ?????????????????????????????????????????????????????????????-->
-=======
 
->>>>>>> 8e5c8fb082640d3adac8bbba594b4761c2455848
+<!--    ?????????????????????????????????????????????????????????????-->
     <script>
         $(document).ready(function() {
             $(".image").click(function() {
@@ -146,7 +137,11 @@
                 $('#popup-outer')
             });
             $("#image1").click(function(){
-                $("#contentsPopup").appendChild
+                var temporary="<div>ID: Sangwook Yun</div><div>Age : 10, from Aug 2018</div>";
+                $("#here").append(temporary);
+            });
+            $("buttonforExit").click(function() {
+                $("#popup-container").css("visibility", "hidden");
             });
         });
      firebase.auth().onAuthStateChanged(function(user) {
