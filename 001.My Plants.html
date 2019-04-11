@@ -74,13 +74,13 @@
         <div id="contents-3">
             <div id="contents-3-left">
                 <div id="contents-3-left-pic1" class="picture">
-                    <a href="pictures/001.jpg"> <img class= "loadImage" src="pictures/001.jpg"></a>
+                    <a class= "links" href="pictures/001.jpg"> <img class= "loadImage" src="pictures/001.jpg"></a>
                 </div>
                 <div id="contents-3-left-pic2" class="picture">
-                    <a href="pictures/002.jpg"><img class= "loadImage" src="pictures/002.jpg"></a>
+                    <a class= "links" href="pictures/002.jpg"><img class= "loadImage" src="pictures/002.jpg"></a>
                 </div>
                 <div id="contents-3-left-pic3" class="picture">
-                    <a href="pictures/003.jpg"><img class= "loadImage" src="pictures/003.jpg"></a>
+                    <a class= "links" href="pictures/003.jpg"><img class= "loadImage" src="pictures/003.jpg"></a>
                 </div>
             </div>
             <!-- Uploads photo to firebase -->
@@ -268,13 +268,19 @@ window.addEventListener("load", function() {
         });
 				setTimeout(function() {
 	        var images = document.getElementsByClassName('loadImage')
+          var links = document.getElementsByClassName('links')
+
 	        console.log("length: " + images.length);
 					console.log(images);
 	        console.log("urls: " + urlArray.length);
 	        console.log(images);
 	        for (var i = 0; i < images.length; i++) {
+            if(urlArray.length < 3) {
+            return;
+            }
 	        //var img = document.getElementById('myimg');
 	        images[i].src = urlArray[i];
+          links[i].href = urlArray[i];
 	        }
 				}, 1000);
       }, 1000);
