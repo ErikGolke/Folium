@@ -1,0 +1,231 @@
+<!doctype html>
+<head>
+    <link href="css/newstyle.css" rel="stylesheet">
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Ubuntu);
+
+
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {    
+      apiKey: "AIzaSyBfhX8hm-A3IAn2us9ybZiP_GWg-H-5sC8",
+      authDomain: "folium-93435.firebaseapp.com",
+      databaseURL: "https://folium-93435.firebaseio.com",
+      projectId: "folium-93435",
+      storageBucket: "folium-93435.appspot.com",
+      messagingSenderId: "700685483452"
+      };
+      firebase.initializeApp(config);
+    </script>
+</head>
+<body>
+    <div id="naviBar">
+        <a href="index.html"><img id="naviBar-img" src="pictures/folium.jpg"></a>
+        <ul id="naviBar-ul1">
+            <a href="001.My Plants.html"><li class="navilist">My Flower</li></a>
+            <a href="002.Neighbor.html"><li class="navilist">Neighbor's</li></a>
+            <a href="003.Ranking.html"><li class="navilist">Ranking</li></a>
+            <a href="004.About.html"><li class="navilist">About us</li></a>
+        </ul>
+        <ul id="naviBar-ul2">
+          <a href="./login.html"><li  id="login" class="navilist">Login</li></a>
+          <a id="logout" onclick="logout()"><li class="navilist">Logout</li></a>
+        </ul>
+    </div>
+    <div id="contents">
+        <div id="contents-1">
+            <h2>My Plants</h2>
+            
+            </div>
+
+            </div>
+  
+        <div id="contents-2">
+            <div id="row1-neighbor">
+                <div class="grid">
+                    <img id="image1" class="image" src="pictures/001.jpg">
+                </div>
+                <div class="grid">
+                    <img class="image" src="pictures/002.jpg">
+                </div>
+                <div class="grid">
+                    <img class="image" src="pictures/003.jpg">
+                </div>
+                <div class="grid">
+                    <img class="image" src="pictures/004.jpg">
+                </div>
+            </div>
+            <div id="row2-neighbor">
+                <div class="grid">
+                    <img class="image" src="pictures/005.jpg">
+                </div>
+                <div class="grid">
+                    <img class="image" src="pictures/006.jpg">
+                </div>
+                <div class="grid">
+                    <img class="image" src="pictures/007.jpg">
+                </div>
+                <div class="grid">
+                    <img class="image" src="pictures/008.jpg">
+                </div>
+            </div>
+            <div id="row3-neighbor">
+                <div class="grid">
+                    <img class="image" src="pictures/009.jpg">
+                </div>
+                <div class="grid">
+                    <img class="image" src="pictures/010.jpg">
+                </div>
+                <div class="grid">
+                    <img class="image" src="pictures/011.jpg">
+                </div>
+                <div class="grid">
+                    <img class="image" src="pictures/012.jpg">
+                </div>
+            </div>
+            <div id="row4-neighbor">
+                <div class="grid">
+                    <img class="image" src="pictures/013.jpg">
+                </div>
+                <div class="grid">
+                    <img class="image" src="pictures/014.jpg">
+                </div>
+                <div class="grid">
+                    <img class="image" src="pictures/015.jpg">
+                </div>
+                <div class="grid">
+                    <img class="image" src="pictures/016.jpg">
+                </div>
+            </div>
+            <div id="contents-2-loading">
+            <input id="input3" type="button" value="Load More">
+            </div>
+        </div>
+    </div>
+<!--???????????????????????????????????????????????????????????-->
+    <div id="popup-container" class="popup-container2">
+        <img id="popup-img" src="#">
+        <div id="here"></div>
+        <button id="buttonforExit">Close</button>
+    </div>
+
+    <div id="footer">
+        <div>
+            Folium<br>
+            Telephone : 250-328-2656<br>
+            Address : BCIT Student resident, Nisga'a D 551
+        </div>
+    </div>
+
+<!--    ?????????????????????????????????????????????????????????????-->
+    <script>
+        $(document).ready(function() {
+            $(".image").click(function() {
+                var num=$(this).attr('src');
+                $('#popup-img').attr('src',num);
+                $('#popup-container').css("visibility","visible")
+                $('#popup-outer')
+            });
+            $("#image1").click(function(){
+                var temporary="<div id='there'><div><b>ID :</b> Sangwook Yun</div><div><b>Category : </b>Palm Plants</div><div><b>tag : </b>#Palm, #houseplants, #easy</div><div><b>Age : </b>10, from Aug 2018</div><div='RC'><b>Recent comment</b><img src='pictures/comment.png'></div></div>";
+                $("#here").append(temporary);
+            });
+            $("#buttonforExit").click(function() {
+                $("#popup-container").hide()
+            });
+        });
+     firebase.auth().onAuthStateChanged(function(user) {
+      var user = firebase.auth().currentUser;
+      var name;
+
+      if (user != null) {
+         name = user.displayName;
+      }
+        if (user) {
+        document.getElementById("login").innerHTML = name;
+        }else {
+         console.log("Not signed in");
+       }
+     });
+     function logout() {
+      firebase.auth().signOut().then(function() {
+        console.log('Signed Out');
+        document.getElementById("login").innerHTML = "Login";
+      }, function(error) {
+        console.error('Sign Out Error', error);
+      });
+     }
+    firebase.auth().onAuthStateChanged(function(user) {
+     var user = firebase.auth().currentUser;
+     var name;
+
+     if (user != null) {
+        name = user.displayName;
+     }
+       if (user) {
+       document.getElementById("login").innerHTML = name;
+       }else {
+        console.log("Not signed in");
+      }
+    });
+    function logout() {
+     firebase.auth().signOut().then(function() {
+       console.log('Signed Out');
+       document.getElementById("login").innerHTML = "Login";
+     }, function(error) {
+       console.error('Sign Out Error', error);
+     });
+   };
+function snapshotToArray(snapshot) {
+    var returnArr = [];
+
+    snapshot.forEach(function(childSnapshot) {
+        var item = childSnapshot.val();
+        item.key = childSnapshot.key;
+
+        returnArr.push(item);
+    });
+    return returnArr;
+};
+
+window.addEventListener("load", function() {
+  setTimeout(function() {
+	var storage = firebase.storage();
+	var storageRef = storage.ref();
+	var user = firebase.auth().currentUser;
+	var name;
+	var urlArray;
+
+	if (user != null) {
+ 		 name = user.displayName;
+	}
+
+    var urlList = firebase.database().ref('users/' + name + '/photoURL');
+
+    urlList.on('value', function(snapshot) {
+        urlArray =	snapshotToArray(snapshot);
+        console.log(urlArray);
+        });
+				setTimeout(function() {
+	        var images = document.getElementsByClassName('image')
+	        console.log("length: " + images.length);
+					console.log(images);
+	        console.log("urls: " + urlArray.length);
+	        console.log(images);
+	        for (var i = 0; i < images.length; i++) {
+            if(urlArray.length < 3) {
+            return;
+            }
+	        //var img = document.getElementById('myimg');
+	        images[i].src = urlArray[i];
+	        }
+				}, 1000);
+      }, 1000);
+});
+    </script>
+</body>
