@@ -44,8 +44,13 @@
             <div id="contents-1-nav">
                 <div id="contents-1-nav-search">
                     <input id="input" type="text" placeholder="search">
+<<<<<<< HEAD
                     <input id="input2" type="button" value="Go">
+                    <div>e.g) User's name, type of plants</div>
+=======
+                    <input id="input2"onclick="download()" type="button" value="Go">
                     <div>ads adfasdf asdf</div>
+>>>>>>> 8e5c8fb082640d3adac8bbba594b4761c2455848
                 </div>
 
             </div>
@@ -53,7 +58,7 @@
         <div id="contents-2">
             <div id="row1-neighbor">
                 <div class="grid">
-                    <img class="image" src="pictures/001.jpg">
+                    <img id="image1" class="image" src="pictures/001.jpg">
                 </div>
                 <div class="grid">
                     <img class="image" src="pictures/002.jpg">
@@ -126,8 +131,12 @@
             Address : BCIT Student resident, Nisga'a D 551
         </div>
     </div>
-    
+<<<<<<< HEAD
+    <div id=contentsPopup>askldjf qkwjerlk askldjf qwelkrj </div>
 <!--    ?????????????????????????????????????????????????????????????-->
+=======
+
+>>>>>>> 8e5c8fb082640d3adac8bbba594b4761c2455848
     <script>
         $(document).ready(function() {
             $(".image").click(function() {
@@ -136,8 +145,10 @@
                 $('#popup-container').css("visibility","visible")
                 $('#popup-outer')
             });
+            $("#image1").click(function(){
+                $("#contentsPopup").appendChild
+            });
         });
-        
      firebase.auth().onAuthStateChanged(function(user) {
       var user = firebase.auth().currentUser;
       var name;
@@ -159,7 +170,6 @@
         console.error('Sign Out Error', error);
       });
      }
-
     firebase.auth().onAuthStateChanged(function(user) {
      var user = firebase.auth().currentUser;
      var name;
@@ -180,6 +190,55 @@
      }, function(error) {
        console.error('Sign Out Error', error);
      });
-    }
+   };
+
+    function snapshotToArray(snapshot) {
+        var returnArr = [];
+
+        snapshot.forEach(function(childSnapshot) {
+            var item = childSnapshot.val();
+            item.key = childSnapshot.key;
+
+            returnArr.push(item);
+        });
+        return returnArr;
+    };
+
+    function download() {
+      setTimeout(function() {
+    	var storage = firebase.storage();
+    	var storageRef = storage.ref();
+    	var user = firebase.auth().currentUser;
+    	var name = document.getElementById("input").value;
+    	var urlArray;
+
+    	if (user != null) {
+     		 name = user.displayName;
+    	}
+
+        var urlList = firebase.database().ref('users/' + name + '/photoURL');
+
+        urlList.on('value', function(snapshot) {
+            urlArray =	snapshotToArray(snapshot);
+            console.log(urlArray);
+            });
+    				setTimeout(function() {
+    	        var images = document.getElementsByClassName('image');
+              var gridItems = document.getElementsByClassName('grid');
+
+    	        console.log("length: " + images.length);
+    					console.log(images);
+    	        console.log("urls: " + urlArray.length);
+    	        console.log(images);
+    	        for (var i = 0; i < images.length; i++) {
+                if(urlArray.length < 3) {
+                return;
+                }
+    	        //var img = document.getElementById('myimg');
+    	        images[i].src = urlArray[i];
+    	        }
+    				}, 1000);
+          }, 1000);
+    };
     </script>
 </body>
