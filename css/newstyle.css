@@ -363,8 +363,8 @@
             height:300px;
         }
         #contents-2 p {
-            font-size:35px;
-            line-height:55px;
+            font-size:25px;
+            line-height:50px;
         }
 /*4.About end-*/
 /*-----------------------------------------------------------*/
@@ -373,6 +373,7 @@
             position:fixed;
             width:1000px;
             height:600px;
+            text-align:center;
             top:70px;
             left:250px;
             background:white;
@@ -380,8 +381,15 @@
             visibility: hidden;
         }
         #popup-img {
-             width:60%;
+             width:90%;
              height:60%;
+             margin:0 auto;
              text-align: center;
              border:1px solid lightgray;
+             margin-top: 20px;
+             margin-left:10px;
+             margin-right:10px;
+        }
+        #contentsPopup {
+            
         }
