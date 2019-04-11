@@ -61,7 +61,6 @@
     </div>
     <div id="contents">
         <div id="contents-1">
-          <button onclick="download()">download</button>
             <h2>Manage your Plant!</h2>
         </div>
         <div id="contents-2">
@@ -158,7 +157,7 @@
                     <div>
                         <h4>Tag</h4>
                         <div class="tagBox">
-                            <p>#<small>ferniliscious</small>#<small>cutefern</small>#<small>beautifulplants</small>#<small>nature</small></p>
+                            <p>#<small>rose</small>#<small>redrose</small>#<small>beautifulplants</small>#<small>nature</small></p>
                         </div>
                     </div>
             </div>
@@ -249,7 +248,8 @@ function snapshotToArray(snapshot) {
     return returnArr;
 };
 
-function download () {
+window.addEventListener("load", function() {
+  setTimeout(function() {
 	var storage = firebase.storage();
 	var storageRef = storage.ref();
 	var user = firebase.auth().currentUser;
@@ -277,7 +277,8 @@ function download () {
 	        images[i].src = urlArray[i];
 	        }
 				}, 1000);
-}
+      }, 1000);
+});
 function logout() {
 	firebase.auth().signOut().then(function() {
 		console.log('Signed Out');
