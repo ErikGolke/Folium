@@ -40,6 +40,7 @@
         .navilist:hover {
             background-color:lightgray;
             width:30px;
+            cursor:pointer;
         }
         #naviBar-ul2 {
             position:absolute;
@@ -365,6 +366,12 @@
         #contents-2 p {
             font-size:35px;
             line-height:55px;
+        }
+        #input2 {
+            cursor: pointer;
+        }
+        #input3 {
+            cursor: pointer;
         }
 /*4.About end-*/
 /*-----------------------------------------------------------*/
