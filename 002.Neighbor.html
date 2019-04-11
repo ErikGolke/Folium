@@ -47,13 +47,7 @@
                     <input id="input2" type="button" value="Go">
                     <div>ads adfasdf asdf</div>
                 </div>
-                <!-- <div id="contents-1-nav-filter">
-                    <ul>
-                        <li>a</li>
-                        <li>b</li>
-                        <li>c</li>
-                    </ul>
-                </div> -->
+
             </div>
         </div>
         <div id="contents-2">
@@ -118,6 +112,13 @@
             </div>
         </div>
     </div>
+
+    <div id="popup-container" class="popup-container2">
+        <img id="popup-img" src="#">
+        <div>asdfasdf</div>
+        <button>asdf</button>
+    </div>
+    
     <div id="footer">
         <div>
             Folium<br>
@@ -152,6 +153,16 @@
         })
     </script>
     <script>
+<<<<<<< HEAD
+        $(document).ready(function() {
+            $(".image").click(function() {
+                var num=$(this).attr('src');
+                $('#popup-img').attr('src',num);
+                $('#popup-container').css("visibility","visible")
+                $('#popup-outer')
+            });
+        });
+=======
     firebase.auth().onAuthStateChanged(function(user) {
      var user = firebase.auth().currentUser;
      var name;
@@ -173,5 +184,6 @@
        console.error('Sign Out Error', error);
      });
     }
+>>>>>>> b064070d18785e7af9d76ec52e7793cca522aaa3
     </script>
 </body>
