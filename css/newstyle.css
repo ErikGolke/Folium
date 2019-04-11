@@ -181,6 +181,7 @@
             margin:0 auto;
         }
     /*Contents 2 end*/
+
 /*2.Neighbor end-*/
 /*-----------------------------------------------------------*/
 
@@ -221,4 +222,23 @@
         #contents-2 p {
             font-size:35px;
             line-height:55px;
+        }
+/*4.About end-*/
+/*-----------------------------------------------------------*/
+
+        #popup-container {
+            position:fixed;
+            width:1000px;
+            height:600px;
+            top:70px;
+            left:250px;
+            background:white;
+            border:1px solid lightgray;
+            visibility: hidden;   
+        }
+        #popup-img {
+             width:60%;
+             height:60%;
+             text-align: center;
+             border:1px solid lightgray;
         }

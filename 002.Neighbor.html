@@ -33,13 +33,7 @@
                     <input id="input2" type="button" value="Go">
                     <div>ads adfasdf asdf</div>
                 </div>
-                <!-- <div id="contents-1-nav-filter">
-                    <ul>
-                        <li>a</li>
-                        <li>b</li>
-                        <li>c</li>
-                    </ul>
-                </div> -->
+
             </div>
         </div>
         <div id="contents-2">
@@ -104,6 +98,13 @@
             </div>
         </div>
     </div>
+
+    <div id="popup-container" class="popup-container2">
+        <img id="popup-img" src="#">
+        <div>asdfasdf</div>
+        <button>asdf</button>
+    </div>
+    
     <div id="footer">
         <div>
             Folium<br>
@@ -136,5 +137,15 @@
             });//window end
             
         })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $(".image").click(function() {
+                var num=$(this).attr('src');
+                $('#popup-img').attr('src',num);
+                $('#popup-container').css("visibility","visible")
+                $('#popup-outer')
+            });
+        });
     </script>
 </body>
