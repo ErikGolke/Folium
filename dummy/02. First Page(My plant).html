@@ -1,0 +1,238 @@
+<!doctype html>
+<html>
+    <head>
+        <link href="css/style_updated(navi).css" rel="stylesheet">
+        <style>
+             #smallpic {
+                width:20%;
+                height:90%;
+                float:left;
+                margin:10px;
+                text-align: center;
+            }
+			#logout {
+			cursor: pointer;	
+		}
+            .smallpictures {
+                margin:5px;
+            }
+            .smallpictures img {
+                width:90%;
+                height:180px;
+                margin:0 auto;
+                border:1px solid #222222;
+            }
+            #bigpic {
+                width:40%;
+                height:90%;
+                float:left;
+                margin:15px;
+                position:relative;
+            }
+            #bigpic img {
+                position:absolute;
+                width:100%;
+                height:60%;
+            }
+            #information {
+                width:32%;
+                height:90%;
+                float:left;
+                margin:15px;
+            }
+            #summary {
+                width: 100%;
+                height:150px;
+                font:30px;
+                margin-top:400px;
+                background-color:rgb(186, 245, 168);
+                border-radius: 30px;
+            }
+            #summary h2 {
+                padding-top:20px;
+                margin-left:20px;
+            }
+            #summary p{
+                margin-left:20px;
+                margin-right:20px;
+            }
+            #reviewdetail {
+                width:100%;
+                height:380px;
+                background-color:rgb(186, 245, 168);
+                border-radius: 30px;
+            }
+            #reviewdetail h2 {
+                
+                padding-top:20px;
+                margin-left:20px;
+            }
+            .review, #reviewdetail div {
+                font-size:15px;
+                
+                margin-left:20px;
+                margin-right:20px;
+                
+            }
+            .star {
+                text-align: center;
+                
+                margin-left:20px;
+                margin-right:20px;
+            }
+            #lastinfo {
+                width:100%;
+                height:100px;
+                text-align:center;
+                line-height:50px;
+                
+                background-color:rgba(47, 206, 47, 0.822);
+            }
+            #liastinfo p, #lineinfo h2 {
+                line-height: 0px;
+                border: 1px solid black;
+                margin-top:0px;
+            }
+        </style>
+        <link href="css/dropdown.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+		<!-- Firebase stuff -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
+			<script>
+			  // Initialize Firebase
+			  var config = {
+				apiKey: "AIzaSyBfhX8hm-A3IAn2us9ybZiP_GWg-H-5sC8",
+				authDomain: "folium-93435.firebaseapp.com",
+				databaseURL: "https://folium-93435.firebaseio.com",
+				projectId: "folium-93435",
+				storageBucket: "folium-93435.appspot.com",
+				messagingSenderId: "700685483452"
+			  };
+			  firebase.initializeApp(config);
+			</script>
+
+        <script>
+            
+            $(document).ready(function() {
+                $('.smallpictures a').click(function(evt){
+                    evt.preventDefault();
+
+                    var imgPath=$(this).attr('href');
+                    var oldImage=$('#bigpic img');
+
+                    var newImage=$('<img src="' + imgPath +'">');
+                    newImage.hide();
+
+			        
+                    $('#bigpic').prepend(newImage);
+                    newImage.fadeIn(1000);
+                    oldImage.fadeOut(1000,function(){
+		            $(this).remove();
+			    	});
+
+                }); //end click
+                $('.smallpictures a:first').click();
+            });//end ready
+            
+        </script>
+
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="navi">
+                    <div id="logo" class="navidiv"><img src="./pictures/folium.jpg" width="100%" height="60px"></div>
+                    <div id="navibutton" class="navidiv">
+                                <a>｜</a>
+                                <a class="navigation" href="01. MainPage.html">Home</a>
+                                <a>｜</a>                           
+                                <a class="navigation">My Flower</a>
+                                <a>｜</a>
+                                <a class="navigation" href="03. Second Page(Neighbor's).html">Neighbor's </a>
+                                <a>｜</a>
+                                <a class="navigation" href="04. about.html">About</a>
+                                <a>｜</a>
+                                <a id="login" class="navigation" href="./login.html">Login</a>
+                                <a>｜</a>
+                                <a id="logout" onclick="logout()" class="navigation">Logout</a>
+                </div>
+            </div>
+            <div>
+                <a>1</a>
+
+                
+            </div>
+            <div id="contents">
+                <div id="smallpic">
+                    <div class="smallpictures">
+                        <a href="./pictures/firstpic.jpg"><img src="./pictures/firstpic.jpg"></a>
+                    </div>
+                    <div class="smallpictures">
+                        <a href="./pictures/secondpic.jpg"><img src="./pictures/secondpic.jpg"></a>
+                    </div>
+                    <div class="smallpictures">
+                        <a href="./pictures/thirdpic.jpg"><img src="./pictures/thirdpic.jpg"></a>
+                    </div>
+                </div>
+                <div id="bigpic">   
+                    <div id="bigpiccontent"></div>
+                    <div id="summary"> 
+                        <h2>Name : ......</h2>
+                        <p>Description : askjdflkj akjs df asdf asdf aslkj aklq wejrlk qwlke rljkdalkjsf lka</p>
+                    </div>
+
+                </div>
+                <div id="information">
+                    <div id="reviewdetail">
+                        <h2>Review</h2>
+                        <div>User1 
+                            <p class="review">Thaldkj lakj tad</p>
+                            <p class="star">★★★★☆</p>
+                        </div>
+                        <div>User2
+                            <p class="review">asdfasdf adsfaadsf asdf asdf asdsd</p>
+                            <p class="star">★★★★☆</p>
+                        </div>
+                        <div>User3
+                            <p class="review">asdfasdf adsfas fadsf asdf asdf asd das d</p>
+                            <p class="star">★★☆☆☆</p>
+                        </div>
+                    </div>
+                    <div id="lastinfo">
+                        <h2>How is your Plant</h2>
+                        <p>100!</p>
+                    </div>>
+
+                </div>
+
+            </div>
+            
+        </div>
+        <script src="javascript/dropdown.js"></script>
+
+    </body>
+ <script>
+firebase.auth().onAuthStateChanged(function(user) {
+	var user = firebase.auth().currentUser;
+	var name;
+
+	if (user != null) {
+ 		 name = user.displayName;
+	}
+    if (user) {
+		document.getElementById("login").innerHTML = name;
+    }else {
+   	 console.log("Not signed in");
+ 	 }
+});
+function logout() {
+	firebase.auth().signOut().then(function() {
+		console.log('Signed Out');
+		document.getElementById("login").innerHTML = "Login";
+	}, function(error) {
+ 		console.error('Sign Out Error', error);
+	});
+}
+</script>   
+</html>
