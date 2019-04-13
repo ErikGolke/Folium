@@ -51,6 +51,7 @@
             </div>
         </div>
         <div id="contents-2">
+          <!--Divs to store images retrieved from firebase-->
             <div id="row1-neighbor">
                 <div class="grid">
                     <img id="image1" class="image" src="pictures/001.jpg">
@@ -112,7 +113,6 @@
             </div>
         </div>
     </div>
-<!--???????????????????????????????????????????????????????????-->
     <div id="popup-container" class="popup-container2">
         <img id="popup-img" src="#">
         <div id="here"></div>
@@ -126,111 +126,93 @@
             Address : BCIT Student resident, Nisga'a D 551
         </div>
     </div>
+  <script>
+  /*This function creates a popup with information when a user clicks
+    an image of a plant.*/
+      $(document).ready(function () {
+          $(".image").click(function() {
+              var num=$(this).attr('src');
+              $('#popup-img').attr('src',num);
+              $('#popup-container').css("visibility","visible")
+              $('#popup-outer')
+          });
+          $("#image1").click(function (){
+              var temporary="<div id='there'><div><b>ID :</b> BarrackObama</div><div><b>Category : </b>Palm Plants</div><div><b>tag : </b>#Palm, #houseplants, #easy</div><div><b>Age : </b>10, from Aug 2018</div><div='RC'><b>Recent comment</b><img src='pictures/comment.png'></div></div>";
+              $("#here").append(temporary);
+          });
+          $("#buttonforExit").click(function() {
+              $("#popup-container").hide();
+          });
 
-<!--    ?????????????????????????????????????????????????????????????-->
-    <script>
-        $(document).ready(function () {
-            $(".image").click(function() {
-                var num=$(this).attr('src');
-                $('#popup-img').attr('src',num);
-                $('#popup-container').css("visibility","visible")
-                $('#popup-outer')
-            });
-            $("#image1").click(function (){
-                var temporary="<div id='there'><div><b>ID :</b> BarrackObama</div><div><b>Category : </b>Palm Plants</div><div><b>tag : </b>#Palm, #houseplants, #easy</div><div><b>Age : </b>10, from Aug 2018</div><div='RC'><b>Recent comment</b><img src='pictures/comment.png'></div></div>";
-                $("#here").append(temporary);
-            });
-            $("#buttonforExit").click(function() {
-                $("#popup-container").hide();
-            });
-            
-        });
-     firebase.auth().onAuthStateChanged(function(user) {
-      var user = firebase.auth().currentUser;
-      var name;
-
-      if (user != null) {
-         name = user.displayName;
-      }
-        if (user) {
-        document.getElementById("login").innerHTML = name;
-        }else {
-         console.log("Not signed in");
-       }
-     });
-     function logout() {
-      firebase.auth().signOut().then(function() {
-        console.log('Signed Out');
-        document.getElementById("login").innerHTML = "Login";
-      }, function(error) {
-        console.error('Sign Out Error', error);
       });
-     }
-    firebase.auth().onAuthStateChanged(function(user) {
-     var user = firebase.auth().currentUser;
-     var name;
+/*This function gets the current user's name
+ and changes the login button accordingly*/
+  firebase.auth().onAuthStateChanged(function(user) {
+  var user = firebase.auth().currentUser;
+  var name;
 
-     if (user != null) {
-        name = user.displayName;
-     }
-       if (user) {
-       document.getElementById("login").innerHTML = name;
-       }else {
-        console.log("Not signed in");
-      }
+  if (user != null) {
+     name = user.displayName;
+  }
+    if (user) {
+    document.getElementById("login").innerHTML = name;
+    }else {
+     console.log("Not signed in");
+   }
+  });
+  /*This function logs a currently signed-in user out.*/
+   function logout() {
+    firebase.auth().signOut().then(function() {
+      console.log('Signed Out');
+      document.getElementById("login").innerHTML = "Login";
+    }, function(error) {
+      console.error('Sign Out Error', error);
     });
-    function logout() {
-     firebase.auth().signOut().then(function() {
-       console.log('Signed Out');
-       document.getElementById("login").innerHTML = "Login";
-     }, function(error) {
-       console.error('Sign Out Error', error);
-     });
-   };
+   }
+ /*This function gets a snapshot of the database, retrieving
+   urls to be parsed later. URl's are used to get a users
+   images from storage.*/
+  function snapshotToArray(snapshot) {
+      var returnArr = [];
 
-    function snapshotToArray(snapshot) {
-        var returnArr = [];
+      snapshot.forEach(function(childSnapshot) {
+          var item = childSnapshot.val();
+          item.key = childSnapshot.key;
 
-        snapshot.forEach(function(childSnapshot) {
-            var item = childSnapshot.val();
-            item.key = childSnapshot.key;
-
-            returnArr.push(item);
-        });
-        return returnArr;
-    };
-
-    function download() {
-      setTimeout(function() {
-    	var storage = firebase.storage();
-    	var storageRef = storage.ref();
-    	var user = firebase.auth().currentUser;
-    	var name = document.getElementById("input").value;
-    	var urlArray;
-        var urlList = firebase.database().ref('users/' + name + '/photoURL');
-
-        urlList.on('value', function(snapshot) {
-            urlArray =	snapshotToArray(snapshot);
-            console.log(urlArray);
-            });
-    				setTimeout(function() {
-    	        var images = document.getElementsByClassName('image');
-              var gridItems = document.getElementsByClassName('grid');
-
-    	        console.log("length: " + images.length);
-    					console.log(images);
-    	        console.log("urls: " + urlArray.length);
-    	        console.log(images);
-    	        for (var i = 0; i < urlArray.length; i++) {
-                if(urlArray.length < 3) {
-                return;
-                }
-    	        //var img = document.getElementById('myimg');
-    	        images[i].src = urlArray[i];
-              gridItems[i].style.visibility = "visible";
-    	        }
-    				}, 1000);
-          }, 1000);
-    };
-    </script>
+          returnArr.push(item);
+      });
+      return returnArr;
+  };
+/*This function allows a user to input another users name, and then
+  the database is queried for said name, upon which time it gets all
+  urls stored in the database. Finally, once the url's have been retrieved
+  it uses them to retrieve all images associated with the username from
+  firebase storage; populating divs on the page with the images.*/
+  function download() {
+    setTimeout(function() {
+  	var storage = firebase.storage();
+  	var storageRef = storage.ref();
+  	var user = firebase.auth().currentUser;
+  	var name = document.getElementById("input").value;
+  	var urlArray;
+      var urlList = firebase.database().ref('users/' + name + '/photoURL');
+      //Gets a snapshot of the database
+      urlList.on('value', function(snapshot) {
+          urlArray =	snapshotToArray(snapshot);
+          });
+          //Gets divs from page and populates them with images from firebase
+  				setTimeout(function() {
+  	        var images = document.getElementsByClassName('image');
+            var gridItems = document.getElementsByClassName('grid');
+  	        for (var i = 0; i < urlArray.length; i++) {
+              if(urlArray.length < 3) {
+              return;
+              }
+  	        images[i].src = urlArray[i];
+            gridItems[i].style.visibility = "visible";
+  	        }
+  				}, 1000);
+        }, 1000);
+  };
+  </script>
 </body>

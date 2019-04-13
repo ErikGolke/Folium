@@ -22,19 +22,16 @@
        firebase.initializeApp(config);
      </script>
      <script>
+     /*This function allows a user to click an image on the sidebar,
+        and populates a div in the center of the screen with the image.*/
         $(document).ready(function() {
             $('.picture a').click(function(evt){
                 evt.preventDefault();
-
                 var imgPath=$(this).attr('href');
                 var oldImage=$('#contents-3-center-pic1 img');
-
                 var newImage=$('<img src="' + imgPath +'">');
                 newImage.hide();
-
-
                 $('#contents-3-center-pic1').prepend(newImage);
-
                 oldImage.fadeOut(1000, function(){
                 $(this).remove();
                 });
@@ -90,17 +87,6 @@
                        id="photo" name="photo"
                        accept="image/png, image/jpeg, image/jpg">
                 	<button onclick="upload()">Upload</button>
-                  <!-- The Modal -->
-              <div id="myModal" class="modal">
-
-                <!-- Modal content -->
-                <div class="modal-content">
-                  <span class="close">&times;</span>
-                  <p>Successful Upload</p>
-                </div>
-
-              </div>
-
                 </div>
             </div>
             <div id="contents-3-right">
@@ -174,31 +160,8 @@
 
 </body>
 <script>
-// Get the modal
-var modal = document.getElementById('myModal');
-
-// Get the button that opens the modal
-var btn = document.getElementById("upload");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal
-//btn.onclick = function() {
-//  modal.style.display = "block";
-//}
-
-// When the user clicks on <span> (x), close the modal
-//span.onclick = function() {
-//  modal.style.display = "none";
-//}
-
-// When the user clicks anywhere outside of the modal, close it
-//window.onclick = function(event) {
-//  if (event.target == modal) {
-//    modal.style.display = "none";
-//  }
-//}
+/*This function gets the current user's name
+ and changes the login button accordingly*/
 firebase.auth().onAuthStateChanged(function(user) {
 	var user = firebase.auth().currentUser;
 	var name;
@@ -212,6 +175,9 @@ firebase.auth().onAuthStateChanged(function(user) {
    	 console.log("Not signed in");
  	 }
 });
+/*This function gets a snapshot of the database, retrieving
+  urls to be parsed later. URl's are used to get a users
+  images from storage.*/
 function snapshotToArray(snapshot) {
     var returnArr = [];
 
@@ -223,7 +189,9 @@ function snapshotToArray(snapshot) {
     });
     return returnArr;
 };
-
+/*This function adds a listener to the page, where if a user is
+  logged in, on page load, images from their accounts storage folder
+  are downloaded and placed into divs on the page.*/
 window.addEventListener("load", function() {
   setTimeout(function() {
 	var storage = firebase.storage();
@@ -237,30 +205,25 @@ window.addEventListener("load", function() {
 	}
 
     var urlList = firebase.database().ref('users/' + name + '/photoURL');
-
+    //Gets a snapshot of the database
     urlList.on('value', function(snapshot) {
         urlArray =	snapshotToArray(snapshot);
-        console.log(urlArray);
         });
+        //Gets divs from page and populates them with images from firebase
 				setTimeout(function() {
 	        var images = document.getElementsByClassName('loadImage')
           var links = document.getElementsByClassName('links')
-
-	        console.log("length: " + images.length);
-					console.log(images);
-	        console.log("urls: " + urlArray.length);
-	        console.log(images);
 	        for (var i = 0; i < images.length; i++) {
             if(urlArray.length < 3) {
             return;
             }
-	        //var img = document.getElementById('myimg');
 	        images[i].src = urlArray[i];
           links[i].href = urlArray[i];
 	        }
 				}, 1000);
       }, 1000);
 });
+/*This function logs a currently signed-in user out.*/
 function logout() {
 	firebase.auth().signOut().then(function() {
 		console.log('Signed Out');
@@ -269,6 +232,10 @@ function logout() {
  		console.error('Sign Out Error', error);
 	});
 }
+/*This function allows a user to upload images to a personal folder
+  in the cloud storage part of firebase. Upon uploading, the url to
+  the image is also saved in the database, so that it can easily be
+  parsed over later, and the images retrieved.*/
 function upload() {
 	var user = firebase.auth().currentUser.displayName;
 	const ref = firebase.storage().ref();

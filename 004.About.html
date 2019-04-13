@@ -47,7 +47,7 @@
                 Our mission is to create a platform where the passion for plants can flourish. <br>
                 The dream is to make this a positive thriving community <br>
                 for people to connect, share, and grow. <br>
-                We wish to share this invaluable dream 
+                We wish to share this invaluable dream
                 <br>with everyone.
             </p>
         </div>
@@ -61,6 +61,8 @@
     </div>
 </body>
 <script>
+/*This function gets the current user's name
+ and changes the login button accordingly*/
 firebase.auth().onAuthStateChanged(function(user) {
  var user = firebase.auth().currentUser;
  var name;
@@ -74,6 +76,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     console.log("Not signed in");
   }
 });
+/*This function logs a currently signed-in user out.*/
 function logout() {
  firebase.auth().signOut().then(function() {
    console.log('Signed Out');
